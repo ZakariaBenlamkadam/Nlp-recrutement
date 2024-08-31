@@ -1,6 +1,6 @@
 # Node modules
 node_modules/
-venv/
+myenv/
 # Environment variables
 .env
 
