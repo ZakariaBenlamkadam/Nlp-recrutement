@@ -1,0 +1,40 @@
+.header {
+    background-color: #4f46e5;
+    color: white;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .header-nav {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .nav-link:hover {
+    text-decoration: underline;
+  }
+  
+  .menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none;
+  }
+  
+  .menu-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
