@@ -13,9 +13,11 @@ from llama_index.core.schema import IndexNode
 import json
 import re
 import string
+from datetime import datetime
 
 app = Flask(__name__)
 CORS(app)
+
 # Text cleaning function
 def clear_fun(text):
     text = text.lower()
@@ -27,6 +29,11 @@ def clear_fun(text):
     text = re.sub('\n', ' ', text)
     text = re.sub('\w*\d\w*', ' ', text)
     return text
+
+# Function to generate a unique collection name
+def generate_unique_collection_name(base_name):
+    timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+    return f"{base_name}_{timestamp}"
 
 # Function to chunk and embed text
 def embedding_chuncking(df, chroma_client, collection_name, model_name="sentence-transformers/all-mpnet-base-v2"):
@@ -43,15 +50,23 @@ def embedding_chuncking(df, chroma_client, collection_name, model_name="sentence
             nodes.append(new_node)
 
     embed_model = HuggingFaceEmbedding(model_name=model_name)
+
+    print(f"Creating collection with name: {collection_name}")
+    
     chroma_collection = chroma_client.create_collection(collection_name)
     vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
     storage_context = StorageContext.from_defaults(vector_store=vector_store)
     index = VectorStoreIndex(nodes, embed_model=embed_model, storage_context=storage_context)
+    print(f"Collection {collection_name} created and indexed.")
 
 # Function to calculate cosine similarity
 def calcul_cosine_similarity(chroma_client, resumes_collection_name, jobs_collection_name):
-    resumes_collection = chroma_client.get_collection(resumes_collection_name)
-    jobs_collection = chroma_client.get_collection(jobs_collection_name)
+    try:
+        resumes_collection = chroma_client.get_collection(resumes_collection_name)
+        jobs_collection = chroma_client.get_collection(jobs_collection_name)
+    except Exception as e:
+        print(f"Error accessing collections: {e}")
+        raise e
 
     resumes_data = resumes_collection.get(include=['embeddings', 'metadatas', 'documents'])
     jobs_embeddings = jobs_collection.get(include=['embeddings'])
@@ -130,8 +145,8 @@ def upload_files():
 
         print("DataFrames prepared")
         chroma_client = chromadb.EphemeralClient()
-        resumes_collection_name = "resumes_collection"
-        jobs_collection_name = "jobs_collection"
+        resumes_collection_name = generate_unique_collection_name("resumes_collection")
+        jobs_collection_name = generate_unique_collection_name("jobs_collection")
 
         print("Embedding resumes")
         embedding_chuncking(resumes_df, chroma_client, resumes_collection_name)
@@ -147,6 +162,7 @@ def upload_files():
     except Exception as e:
         print(f"Error: {e}")
         return jsonify({'error': str(e)}), 500
+
 
 
 if __name__ == '__main__':

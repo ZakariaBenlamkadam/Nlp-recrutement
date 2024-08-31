@@ -1,0 +1,28 @@
+.footer {
+    background-color: #4f46e5;
+    color: white;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0 0 8px 8px;
+  }
+  
+  .footer-text {
+    font-size: 14px;
+  }
+  
+  .footer-nav {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .nav-link:hover {
+    text-decoration: underline;
+  }
+  
