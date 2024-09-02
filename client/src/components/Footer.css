@@ -1,28 +1,30 @@
 .footer {
-    background-color: #4f46e5;
+    background-color: #000000;
     color: white;
-    padding: 16px 24px;
+    padding: 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 0 0 8px 8px;
-  }
-  
-  .footer-text {
-    font-size: 14px;
-  }
-  
-  .footer-nav {
-    display: flex;
-    gap: 16px;
-  }
-  
-  .nav-link {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .nav-link:hover {
-    text-decoration: underline;
-  }
+    margin-top: auto; /* Pushes the footer to the bottom */
+
+}
+
+.footer-text {
+font-size: 12px;
+}
+
+.footer-nav {
+display: flex;
+gap: 16px;
+}
+
+.footer-nav .nav-link {
+color: white;
+text-decoration: none;
+font-weight: bold;
+}
+
+.footer-nav .nav-link:hover {
+text-decoration: underline;
+}
   
