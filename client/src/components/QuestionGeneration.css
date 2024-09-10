@@ -1,73 +1,84 @@
+/* Container */
 .questiongeneration-container {
-    padding-top: 10px;
-    width: 80%;
+    padding: 20px;
+    max-width: 800px;
     margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Input Section */
 .questiongeneration-input-section {
-    margin-bottom: 1.5rem; 
+    margin-bottom: 20px;
 }
 
 .questiongeneration-label {
     display: block;
-    margin-bottom: 0.5rem; 
-    font-weight: 500;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
 }
 
 .questiongeneration-textarea {
     width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 0.25rem;
-    font-size: 1rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     resize: vertical;
 }
 
+/* Generate Button */
 .questiongeneration-generate-button {
     width: 100%;
-    padding: 0.75rem 0;
-    background-color: #21262b;
+    padding: 12px;
+    background-color: #0070f3; /* Primary color */
     color: white;
     border: none;
-    border-radius: 0.25rem;
-    font-size: 1rem;
+    border-radius: 4px;
+    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
-    margin-bottom: 2rem; 
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
 }
 
 .questiongeneration-generate-button:hover {
-    background-color: #637283;
+    background-color: #005bb5; /* Darker shade for hover */
 }
 
+/* Questions Section */
 .questiongeneration-questions-section {
-    margin-top: 2rem;
+    margin-top: 20px;
 }
 
 .questiongeneration-title {
-    font-size: 1.5rem; 
+    font-size: 24px;
     font-weight: bold;
-    margin-bottom: 1rem; 
+    color: #333;
+    margin-bottom: 16px;
 }
 
+/* Question Item */
 .questiongeneration-question-item {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 1rem; 
-    gap: 1rem;
+    margin-bottom: 16px;
+    gap: 16px;
 }
 
 .questiongeneration-badge {
-    background-color: black;
-    color: #ccc;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    font-size: 0.75rem; 
-    font-weight: 500;
+    background-color: #0070f3; /* Primary color */
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
     text-align: center;
 }
 
+/* Difficulty Badges */
 .questiongeneration-badge.easy {
     background-color: #d4edda;
     color: #155724;
@@ -83,18 +94,20 @@
     color: #721c24;
 }
 
+/* Question Content */
 .questiongeneration-question-content {
     flex: 1;
 }
 
 .questiongeneration-question-title {
-    margin: 0 0 0.25rem;
-    font-size: 1rem; /* font-medium */
-    font-weight: 500;
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
 }
 
 .questiongeneration-question-description {
     margin: 0;
-    color: #6c757d; 
-    font-size: 0.875rem;
+    color: #6c757d;
+    font-size: 14px;
 }

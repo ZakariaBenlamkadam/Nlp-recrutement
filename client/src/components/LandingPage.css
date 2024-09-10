@@ -90,7 +90,7 @@
   text-align: center;
 }
 
-/* Toggle Button */
+
 
 
 /* Main Content */
@@ -278,6 +278,16 @@
 
   .main-content {
       margin-left: 0;
+  }
+  .header {
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; 
+    background-color: #ffffff;
+    border-bottom: 1px solid #e7dfdf;
   }
 
   .header-nav {
