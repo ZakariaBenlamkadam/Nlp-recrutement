@@ -1,97 +1,104 @@
+/* General Layout for Main */
 .main {
   flex: 1;
-  padding: 16px;
+  padding: 24px;
+  background-color: #f9f9f9; /* Same as the general layout background color */
+  font-family: Arial, sans-serif; /* Consistent font family */
+}
+
+/* Form Container */
+.form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Main Title */
+.main-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Form Styles */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.file-input,
+.textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
   background-color: #ffffff;
 }
 
+.submit-button {
+  padding: 12px;
+  background-color: #0070f3; /* Primary color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
 
-.form-container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .main-title {
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 16px;
-    text-align: center;
-  }
-  
-  .form {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .label {
-    margin-bottom: 8px;
-    font-weight: bold;
-  }
-  
-  .file-input {
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  .textarea {
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  .submit-button {
-    padding: 12px;
-    background-color: #000000;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .submit-button:hover {
-    background-color: #000000;
-  }
-  
+.submit-button:hover {
+  background-color: #005bb5; /* Darker shade for hover */
+}
 
-  
+/* Results Container */
 .results-container {
   max-width: 800px;
   margin: 20px auto;
 }
 
+/* Results Title */
 .results-title {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 16px;
+  color: #333;
+  margin-bottom: 20px;
 }
 
+/* Cards */
 .cards {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 20px;
 }
 
 .card {
   background-color: #ffffff;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
+/* Card Header */
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -99,30 +106,32 @@
 }
 
 .card-title {
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: bold;
+  color: #333;
 }
 
 .card-percentage {
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: bold;
-  color: #0070f3;
+  color: #0070f3; /* Primary color */
 }
 
+/* Card Progress Bar */
 .card-progress {
-  height: 4px;
+  height: 6px;
   background-color: #f0f0f0;
-  border-radius: 2px;
+  border-radius: 3px;
   overflow: hidden;
 }
 
 .card-progress-bar {
   height: 100%;
-  background-color: #0070f3;
+  background-color: #0070f3; /* Primary color */
   transition: width 0.5s ease-in-out;
 }
 
-
+/* Resume Modal */
 .resume-modal {
   position: fixed;
   top: 0;
@@ -150,4 +159,10 @@
 
 .resume-modal button {
   margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #0070f3; /* Primary color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }

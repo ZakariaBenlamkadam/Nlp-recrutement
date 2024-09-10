@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './LandingPage.css';
 import { FaBars } from 'react-icons/fa';
 
@@ -29,54 +30,10 @@ function LandingPage() {
 
     return (
         <div className="app-container">
-            {/* Sidebar */}
-            <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
-                <div className="sidebar-header">
-                    <a href="#" className="sidebar-logo">
-                        <span className="sidebar-title">TalentQuest</span>
-                    </a>
-                </div>
-                <nav className="sidebar-nav">
-                    <div className="collapsible">
-                        <div
-                            className="collapsible-trigger"
-                            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                        >
-                            <span>Home</span>
-                        </div>
-                    </div>
-                    <a href="#" className="sidebar-link">Profile</a>
-                    <a href="#" className="sidebar-link">Settings</a>
-                    <a href="#" className="sidebar-link">Help</a>
-                </nav>
-                <div className="sidebar-footer">
-                    <button className="button-secondary">Get Started</button>
-                </div>
-            </div>
+            
 
             {/* Main Content */}
-            <div className={`main-content ${isSidebarOpen ? 'shifted' : ''}`}>
-                <header className="header">
-                    <a href="#" className="header-logo">
-                        <span className="header-title">TalentQuest</span>
-                    </a>
-
-                    <nav className="header-nav">
-                        <a href="#" className="header-link">Home</a>
-                        <a href="#" className="header-link">Features</a>
-                        <a href="#" className="header-link">Pricing</a>
-                        <a href="#" className="header-link">Contact</a>
-
-                        <button className="button-primary">Get Started</button>
-                    </nav>
-
-                    <button
-                        className={`sidebar-toggle ${isButtonVisible ? '' : 'hidden'}`}
-                        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                    >
-                        <FaBars />
-                    </button>
-                </header>
+            
 
                 <main>
                     <section className="hero-section">
@@ -109,15 +66,9 @@ function LandingPage() {
                     </section>
                 </main>
 
-                <footer className="footer">
-                    <div className="footer-content">
-                        <a href="#" className="footer-link">Privacy Policy</a>
-                        <a href="#" className="footer-link">Terms of Service</a>
-                        <a href="#" className="footer-link">Contact Us</a>
-                    </div>
-                </footer>
+                
             </div>
-        </div>
+        
     );
 }
 
