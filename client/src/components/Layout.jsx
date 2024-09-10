@@ -53,7 +53,7 @@ function Layout() {
             <div className={`main-content ${isSidebarOpen ? 'shifted' : ''}`}>
                 <header className="header">
                     <a href="#" className="header-logo">
-                        <span className="header-title">TalentQuest</span>
+                    <Link to="/" className="header-title">TalentQuest</Link>
                     </a>
 
                     <nav className="header-nav">

@@ -1,3 +1,4 @@
+import time
 from flask import Flask, request, jsonify
 from langchain_groq import ChatGroq
 from langchain_core.prompts import PromptTemplate
@@ -7,6 +8,19 @@ app = Flask(__name__)
 # Initialize the model outside of the endpoint to avoid reloading it on every request
 llm = "llama-3.1-70b-versatile"
 model = ChatGroq(model_name=llm, temperature=0, groq_api_key='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')
+
+def retry_request(func, *args, **kwargs):
+    max_retries = 3
+    delay = 2  # Initial delay in seconds
+    for attempt in range(max_retries):
+        try:
+            return func(*args, **kwargs)
+        except Exception as e:
+            if attempt < max_retries - 1:
+                time.sleep(delay)
+                delay *= 2  # Exponential backoff
+            else:
+                raise e
 
 @app.route('/generate-questions', methods=['POST'])
 def generate_questions():
@@ -24,8 +38,12 @@ def generate_questions():
     prompt_template = PromptTemplate(input_variables=["job_description"], template=prompt)
     chain = prompt_template | model
 
-    # Generate topics from the job description
-    content = chain.invoke({'job_description': job_description }).content.strip()
+    try:
+        # Generate topics from the job description
+        content = retry_request(chain.invoke, {'job_description': job_description }).content.strip()
+    except Exception as e:
+        return jsonify({'error': str(e)}), 503
+
     topics = [topic.strip() for topic in content[content.index('[')+1:content.index(']')].split(',')]
 
     category = "Data Science"
@@ -46,7 +64,10 @@ def generate_questions():
     question_chain = question_prompt_template | model
 
     for topic in topics:
-        questions_raw = question_chain.invoke({'topic': topic, 'category': category }).content.strip()
+        try:
+            questions_raw = retry_request(question_chain.invoke, {'topic': topic, 'category': category }).content.strip()
+        except Exception as e:
+            return jsonify({'error': str(e)}), 503
         
         # Process each question
         loc_questions = []
@@ -62,7 +83,6 @@ def generate_questions():
         questions += loc_questions
 
     return jsonify({'questions': questions})
-
 
 if __name__ == '__main__':
     app.run(debug=True)
