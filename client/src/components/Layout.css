@@ -27,6 +27,7 @@
   
   .sidebar-header {
     padding: 20px;
+    margin-top: 20px;
   }
   
   .sidebar-logo {
@@ -130,6 +131,8 @@
     font-size: 24px;
     font-weight: bold;
     color: #333;
+    text-decoration: none;
+
   }
   
   /* Align the nav links and button to the right */
