@@ -47,7 +47,8 @@ function Layout() {
                     <a href="#" className="sidebar-link">Settings</a>
                 </nav>
                 <div className="sidebar-footer">
-                    <button className="button-secondary">Get Started</button>
+                <Link to="/sign-in" className="button-secondary">Get Started</Link> {/* Update to Link */}
+
                 </div>
             </div>
 

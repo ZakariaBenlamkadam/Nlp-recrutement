@@ -14,7 +14,7 @@ model = ChatGroq(
     groq_api_key='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'
 )
 
-def extract_skills_from_resume(resume_text):
+def extract_skills_from_resume2(resume_text):
     prompt = f"""
     Extract the skills and technologies mentioned in the following CV:
     {resume_text}
@@ -30,7 +30,7 @@ def extract_skills_from_resume(resume_text):
     except Exception as e:
         print(f"Error extracting skills: {e}")
         return []
-def generate_questions_from_skill(category, skill):
+def generate_questions_from_skill2(category, skill):
     prompt = f"""
     Generate 5 interview questions for the category {category} based on the skill: {skill}.
 
@@ -66,11 +66,11 @@ def handle_generate_question():
     resume_text = data.get('resume_text', '')
     category = data.get('category', 'Data Science')  # Default to 'Data Science' if not provided
 
-    skills = extract_skills_from_resume(resume_text)
+    skills = extract_skills_from_resume2(resume_text)
     
     all_questions = []
     for skill in skills:
-        questions = generate_questions_from_skill(category, skill)
+        questions = generate_questions_from_skill2(category, skill)
         all_questions.extend(questions)
     
     return jsonify({
