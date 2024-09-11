@@ -4,12 +4,11 @@ import './Footer.css'
 export default function Footer() {
   return (
     <footer className="footer">
-        <div className="footer-text">&copy; 2024 Team 3D. All rights reserved.</div>
-        <nav className="footer-nav">
-          <a href="#" className="nav-link">Privacy</a>
-          <a href="#" className="nav-link">Terms</a>
-          <a href="#" className="nav-link">Support</a>
-        </nav>
-      </footer>
+        <div className="footer-content">
+            <a href="#" className="footer-link">Privacy Policy</a>
+            <a href="#" className="footer-link">Terms of Service</a>
+            <a href="#" className="footer-link">Contact Us</a>
+        </div>
+    </footer>
   )
 }

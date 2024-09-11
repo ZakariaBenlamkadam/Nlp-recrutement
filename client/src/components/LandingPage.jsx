@@ -30,11 +30,7 @@ function LandingPage() {
 
     return (
         <div className="app-container">
-            
-
             {/* Main Content */}
-            
-
                 <main>
                     <section className="hero-section">
                         <div className="hero-content">
@@ -64,9 +60,7 @@ function LandingPage() {
                             </div>
                         </div>
                     </section>
-                </main>
-
-                
+                </main> 
             </div>
         
     );

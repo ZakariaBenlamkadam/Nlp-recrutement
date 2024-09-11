@@ -42,6 +42,8 @@ function Layout() {
                     </div>
                     <Link to="/resume-match" className="sidebar-link">ResumeMatch</Link>
                     <Link to="/quest-ai" className="sidebar-link">QuestAi</Link>
+                    <Link to="/resume-quest" className="sidebar-link">ResumeQuest</Link>
+
                     <a href="#" className="sidebar-link">Settings</a>
                 </nav>
                 <div className="sidebar-footer">
@@ -77,14 +79,15 @@ function Layout() {
                     <Outlet /> {/* This is where the routed content will be rendered */}
                 </main>
 
-                <footer className="footer">
+                
+            </div>
+            <footer className={`footer ${isSidebarOpen ? 'shifted' : ''}`}>
                     <div className="footer-content">
                         <a href="#" className="footer-link">Privacy Policy</a>
                         <a href="#" className="footer-link">Terms of Service</a>
                         <a href="#" className="footer-link">Contact Us</a>
                     </div>
-                </footer>
-            </div>
+            </footer>
         </div>
     );
 }
