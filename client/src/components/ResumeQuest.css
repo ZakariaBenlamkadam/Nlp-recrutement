@@ -1,27 +1,26 @@
 /* Container */
-.resumequest-container {
+.questiongeneration-container {
   padding: 20px;
   max-width: 800px;
   margin: 0 auto;
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: left;
 }
 
 /* Input Section */
-.resumequest-input-section {
+.questiongeneration-input-section {
   margin-bottom: 20px;
 }
 
-.resumequest-label {
+.questiongeneration-label {
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
   color: #333;
 }
 
-.resumequest-textarea {
+.questiongeneration-textarea {
   width: 90%;
   padding: 12px;
   border: 1px solid #ddd;
@@ -31,11 +30,11 @@
   resize: vertical;
 }
 
-/* Extract Button */
-.resumequest-extract-button {
+/* Generate Button */
+.questiongeneration-generate-button {
   width: 100%;
   padding: 12px;
-  background-color: #0070f3;
+  background-color: #0070f3; /* Primary color */
   color: white;
   border: none;
   border-radius: 4px;
@@ -45,64 +44,70 @@
   margin-bottom: 20px;
 }
 
-.resumequest-extract-button:hover {
-  background-color: #005bb5;
+.questiongeneration-generate-button:hover {
+  background-color: #005bb5; /* Darker shade for hover */
 }
 
-/* Skills Section */
-.resumequest-skills-section {
+/* Questions Section */
+.questiongeneration-questions-section {
   margin-top: 20px;
 }
 
-.resumequest-title {
+.questiongeneration-title {
   font-size: 24px;
   font-weight: bold;
   color: #333;
   margin-bottom: 16px;
 }
 
-.resumequest-skills-list {
-  list-style: none;
-  padding: 0;
-}
-
-.resumequest-skill-item {
+/* Question Item */
+.questiongeneration-question-item {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid #ddd;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  gap: 16px;
 }
 
-.resumequest-generate-button {
-  padding: 8px 12px;
-  background-color: #0070f3;
+.questiongeneration-badge {
+  background-color: #0070f3; /* Primary color */
   color: white;
-  border: none;
+  padding: 8px 12px;
   border-radius: 4px;
   font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-weight: bold;
+  text-align: center;
 }
 
-.resumequest-generate-button:hover {
-  background-color: #005bb5;
+/* Difficulty Badges */
+.questiongeneration-badge.easy {
+  background-color: #d4edda;
+  color: #155724;
 }
 
-/* Questions Section */
-.resumequest-questions-section {
-  margin-top: 20px;
+.questiongeneration-badge.medium {
+  background-color: #fff3cd;
+  color: #856404;
 }
 
-.resumequest-questions-list {
-  list-style: none;
-  padding: 0;
+.questiongeneration-badge.hard {
+  background-color: #f8d7da;
+  color: #721c24;
 }
 
-.resumequest-question-item {
-  margin-bottom: 16px;
-  padding: 10px;
-  background-color: #f9f9f9;
-  border-radius: 4px;
-  border: 1px solid #ddd;
+/* Question Content */
+.questiongeneration-question-content {
+  flex: 1;
+}
+
+.questiongeneration-question-title {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.questiongeneration-question-description {
+  margin: 0;
+  color: #6c757d;
+  font-size: 14px;
 }

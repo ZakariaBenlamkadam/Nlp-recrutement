@@ -1,3 +1,20 @@
+
+  
+  .questiongeneration-category-section {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center; /* Center the select element horizontally */
+    width: 100%;
+  }
+  
+  .custom-form-control {
+    display: flex;
+    justify-content: center; /* Center the form control */
+  }
+  
+  
+
+
 /* Container */
 .questiongeneration-container {
     padding: 20px;
