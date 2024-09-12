@@ -1,11 +1,15 @@
 import React from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useNavigate } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
-import './Layout.css'; // Add styles for layout if needed
+import './Layout.css';
 
 function Layout() {
     const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
     const [isButtonVisible, setIsButtonVisible] = React.useState(true);
+    const navigate = useNavigate();
+
+    // Retrieve authentication status from localStorage
+    const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
 
     React.useEffect(() => {
         let lastScrollTop = 0;
@@ -25,6 +29,11 @@ function Layout() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const handleLogout = () => {
+        localStorage.removeItem('isAuthenticated');
+        navigate('/sign-in');
+    };
+
     return (
         <div className="app-container">
             {/* Sidebar */}
@@ -40,23 +49,28 @@ function Layout() {
                             <Link to="/" className="sidebar-link">Home</Link>
                         </div>
                     </div>
-                    <Link to="/resume-match" className="sidebar-link">ResumeMatch</Link>
-                    <Link to="/quest-ai" className="sidebar-link">QuestAi</Link>
-                    <Link to="/resume-quest" className="sidebar-link">ResumeQuest</Link>
-
+                    {isAuthenticated && (
+                        <>
+                            <Link to="/resume-match" className="sidebar-link">ResumeMatch</Link>
+                            <Link to="/quest-ai" className="sidebar-link">QuestAi</Link>
+                            <Link to="/resume-quest" className="sidebar-link">ResumeQuest</Link>
+                        </>
+                    )}
                     <a href="#" className="sidebar-link">Settings</a>
                 </nav>
-                <div className="sidebar-footer">
-                <Link to="/sign-in" className="button-secondary">Get Started</Link> {/* Update to Link */}
-
-                </div>
+                {isAuthenticated && (
+                    <div className="sidebar-footer">
+                        <button onClick={handleLogout} className="button-secondary">Logout</button>
+                    </div>
+                    )}
+                
             </div>
 
             {/* Main Content */}
             <div className={`main-content ${isSidebarOpen ? 'shifted' : ''}`}>
                 <header className="header">
                     <a href="#" className="header-logo">
-                    <Link to="/" className="header-title">TalentQuest</Link>
+                        <Link to="/" className="header-title">TalentQuest</Link>
                     </a>
 
                     <nav className="header-nav">
@@ -79,15 +93,13 @@ function Layout() {
                 <main>
                     <Outlet /> {/* This is where the routed content will be rendered */}
                 </main>
-
-                
             </div>
             <footer className={`footer ${isSidebarOpen ? 'shifted' : ''}`}>
-                    <div className="footer-content">
-                        <a href="#" className="footer-link">Privacy Policy</a>
-                        <a href="#" className="footer-link">Terms of Service</a>
-                        <a href="#" className="footer-link">Contact Us</a>
-                    </div>
+                <div className="footer-content">
+                    <a href="#" className="footer-link">Privacy Policy</a>
+                    <a href="#" className="footer-link">Terms of Service</a>
+                    <a href="#" className="footer-link">Contact Us</a>
+                </div>
             </footer>
         </div>
     );

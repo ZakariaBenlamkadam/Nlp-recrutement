@@ -19,7 +19,8 @@ const SignIn = ({ setIsAuthenticated }) => {  // Receive setIsAuthenticated as a
     try {
       const response = await axios.post('/login', { email, password });
       if (response.data.success) {
-        setIsAuthenticated(true);  // Update authentication state on successful login
+        localStorage.setItem('isAuthenticated', 'true');  // Store authentication state
+        setIsAuthenticated(true);  // Update authentication state
         navigate(response.data.redirect);  // Navigate to the appropriate page
       } else {
         setError(response.data.error);
