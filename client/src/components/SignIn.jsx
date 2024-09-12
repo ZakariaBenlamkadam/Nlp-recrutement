@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom';  // Import useNavigate
 import axios from 'axios';  // Import axios for making HTTP requests
 import { Link } from 'react-router-dom';
 
-
-const SignIn = () => {
+const SignIn = ({ setIsAuthenticated }) => {  // Receive setIsAuthenticated as a prop
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -20,7 +19,8 @@ const SignIn = () => {
     try {
       const response = await axios.post('/login', { email, password });
       if (response.data.success) {
-        navigate(response.data.redirect);
+        setIsAuthenticated(true);  // Update authentication state on successful login
+        navigate(response.data.redirect);  // Navigate to the appropriate page
       } else {
         setError(response.data.error);
       }
@@ -28,7 +28,6 @@ const SignIn = () => {
       setError('An error occurred. Please try again.');
     }
   };
-  
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
