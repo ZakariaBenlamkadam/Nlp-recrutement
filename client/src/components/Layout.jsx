@@ -79,7 +79,8 @@ function Layout() {
                         <a href="#" className="header-link">Pricing</a>
                         <a href="#" className="header-link">Contact</a>
 
-                        <button className="button-primary">Get Started</button>
+                        
+                        <button className="button-primary"><Link to="/sign-in">Get Started</Link></button>
                     </nav>
 
                     <button
