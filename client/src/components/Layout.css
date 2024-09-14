@@ -158,8 +158,7 @@
     justify-content: space-between;
     align-items: center;
     position: relative; 
-    background-color: #ffffff;
-    border-bottom: 1px solid #e7dfdf;
+    background: linear-gradient(90deg, #eabc11, #eabc11);
   }
   
   /* Align the logo to the left */
