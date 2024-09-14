@@ -29,14 +29,14 @@ function LandingPage() {
     }, []);
 
     return (
-        <div className="app-container">
+        <div className="app-container1">
             {/* Main Content */}
                 <main>
                     <section className="hero-section">
                         <div className="hero-content">
                             <h1>Unlock Smarter Hiring with TalentQuest</h1>
                             <p>Our AI-powered platform helps recruiters find the best resume matches for their job descriptions and generates tailored interview questions to streamline the hiring process.</p>
-                            <button className="button-primary">Get Started</button>
+                            <button className="button-primary1">Get Started</button>
                         </div>
                         <div className="hero-image">
                             <img src="./rec.jpg" alt="Hero" />

@@ -45,9 +45,8 @@ function Layout() {
                 </div>
                 <nav className="sidebar-nav">
                     <div className="collapsible">
-                        <div className="collapsible-trigger">
                             <Link to="/" className="sidebar-link">Home</Link>
-                        </div>
+                        
                     </div>
                     {isAuthenticated && (
                         <>
@@ -60,7 +59,15 @@ function Layout() {
                 </nav>
                 {isAuthenticated && (
                     <div className="sidebar-footer">
-                        <button onClick={handleLogout} className="button-secondary">Logout</button>
+                        <button onClick={handleLogout} className="button-secondary1">Logout</button>
+                    </div>
+                    )}
+                    
+                {!isAuthenticated && (
+                    <div className="sidebar-footer">
+                        <button className="button-secondary1">
+                            <Link to="/sign-in" className="no-link-style">Sign In</Link>
+                        </button>
                     </div>
                     )}
                 
@@ -80,7 +87,7 @@ function Layout() {
                         <a href="#" className="header-link">Contact</a>
 
                         
-                        <button className="button-primary"><Link to="/sign-in">Get Started</Link></button>
+                        <Link to="/sign-in" className="header-signin">Get Started</Link>
                     </nav>
 
                     <button

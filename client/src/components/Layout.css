@@ -3,14 +3,14 @@
     display: flex;
     flex-direction: column; /* Stack children vertically */
     min-height: 100vh; /* Full viewport height */
-    background-color: #f9f9f9;
+    background-color: #fdc903;
     font-family: Arial, sans-serif;
 }
   
   /* Sidebar */
   .sidebar {
-    width: 250px;
-    background-color: #2d2d2d;
+    width: 200px;
+    background-color: #001f3f;
     color: white;
     display: flex;
     flex-direction: column;
@@ -27,18 +27,23 @@
   
   .sidebar-header {
     padding: 20px;
-    margin-top: 20px;
+    margin-top: 25px;
   }
   
   .sidebar-logo {
     text-decoration: none;
-    color: #0070f3;
+    color: #001f3f;
+    top: 10px;
   }
   
   .sidebar-title {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: bold;
-    color: #0070f3; /* Dark blue */
+    color: #001f3f;
+    background-color: #ce9f07;
+    padding: 12px;
+    top: 100px;
+    border-radius: 10px;
   }
   
   .sidebar-nav {
@@ -49,12 +54,14 @@
   .sidebar-link {
     display: block;
     padding: 10px;
-    color: white;
+    color: #f0f0f0;
     text-decoration: none;
   }
   
   .sidebar-link:hover {
-    background-color: #444;
+    background-color: #fdc903;
+    border-radius: 5px;
+    color: #001f3f;
   }
   
   .collapsible {
@@ -64,9 +71,9 @@
   .collapsible-trigger {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    padding: 5px;
     cursor: pointer;
-    background-color: #333;
+    background-color: #ce9f07;
     border-radius: 4px;
   }
   
@@ -79,30 +86,51 @@
   .sidebar-footer {
     padding: 20px;
     border-top: 1px solid #444;
+    text-decoration: none;
   }
-  .button-secondary {
+  .button-secondary1 {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
-    background-color: red; /* Or any color you prefer */
     color: white;
     border: none;
     cursor: pointer;
     font-weight: bold;
     text-align: center;
+    color: inherit; /* Inherit color from the button */
+    text-decoration: none;
 }
-  .button-secondary {
-    background-color: #0070f3;
-    color: white;
+  .button-secondary1 {
+    background-color: #33475b;
+    color: rgb(255, 255, 255);
     border: none;
     padding: 10px;
     width: 100%;
     border-radius: 4px;
     cursor: pointer;
     text-align: center;
+    color: inherit; /* Inherit color from the button */
+    text-decoration: none;
   }
+
+  .no-link-style {
+    color: inherit; /* Inherit color from the button */
+    text-decoration: none; /* Remove underline */
+}
+
   
-  
+  .button-secondary1:hover{
+    background-color: #668cb3;
+    color: #001f3f;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    
+  }
   
   
   /* Main Content */
@@ -111,6 +139,11 @@
     margin-left: 0;
     padding: 20px;
     transition: margin-left 0.3s ease;
+    background-color: #fdc903;
+    background-image: url('bgg.png');  /* Background image from public folder */
+    background-size: cover;  /* Ensures the image covers the whole container */
+    background-position: center;  /* Centers the image */
+    background-repeat: no-repeat; 
   }
   
   .main-content.shifted {
@@ -162,20 +195,20 @@
   }
   
   /* Get Started Button */
-  .button-primary {
-    background-color: #0070f3;
+  .header-signin {
+    background-color: #001f3f;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 7.5px 20px;
     cursor: pointer;
     border-radius: 4px;
-    font-weight: bold;
-    transition: all 0.3s ease;
+    font-size: 18px;
+    text-decoration: none;
   }
   
   /* Sidebar Toggle Button */
   .sidebar-toggle {
-    background-color: #0070f3;
+    background-color: #001f3f;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -186,18 +219,15 @@
     top: 40px; 
     z-index: 1001; 
     transition: opacity 0.3s ease; 
-    transition: opacity 0.3s ease; /* Smooth transition for visibility */
   
   
   }
-  /* Hide the sidebar toggle button when scrolling down */
   .sidebar-toggle.hidden {
-    opacity: 0; /* Makes the button invisible */
-    pointer-events: none; /* Prevents clicks on the button */
+    opacity: 0; 
+    pointer-events: none; 
   }
   
   
-  /* Hero Section */
   .hero-section {
     display: flex;
     justify-content: space-between;
@@ -335,16 +365,19 @@
     }
   
     .sidebar-toggle {
-      background-color: #0070f3;
+      background-color: #001f3f !important;
       color: white;
       border: none;
       padding: 10px 15px;
       border-radius: 4px;
       cursor: pointer; 
-      position: fixed; /* Fixed position to keep it in place */
-      right: 40px; /* Align to the right side */
-      top: 36px; /* Keep it aligned at the top */
-      z-index: 1001; /* Ensure it's above other content */
+      position: fixed; 
+      right: 40px; 
+      top: 40px; 
+      z-index: 1001; 
+      transition: opacity 0.3s ease; 
+    
+    
     }
     
   

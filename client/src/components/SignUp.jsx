@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import {Link } from 'react-router-dom';
+import './SignUp.css'
 
 
 const SignUp = () => {
@@ -64,97 +65,90 @@ const SignUp = () => {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <div style={{ width: '350px', padding: '20px', borderRadius: '10px', background: 'rgba(0, 0, 0, 0.6)', color: 'white' }}>
-        <h1 style={{ textAlign: 'center' }}>SIGN UP</h1>
-        <form onSubmit={handleSubmit}>
-          <div style={{ position: 'relative', marginBottom: '15px' }}>
-            <input
-              type="text"
-              placeholder="Full Name"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid white', color: 'white', background: 'transparent' }}
-              required
-            />
-            <i className="fa fa-user" style={{ position: 'absolute', top: '50%', right: '10px', transform: 'translateY(-50%)', color: 'white' }}></i>
-          </div>
-
-          <div style={{ position: 'relative', marginBottom: '15px' }}>
-            <input
-              type="tel"
-              placeholder="Phone Number"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid white', color: 'white', background: 'transparent' }}
-              required
-            />
-            <i className="fa fa-phone" style={{ position: 'absolute', top: '50%', right: '10px', transform: 'translateY(-50%)', color: 'white' }}></i>
-          </div>
-
-          <div style={{ position: 'relative', marginBottom: '15px' }}>
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid white', color: 'white', background: 'transparent' }}
-              required
-            />
-            <i className='fa fa-envelope' style={{ position: 'absolute', top: '50%', right: '10px', transform: 'translateY(-50%)', color: 'white' }}></i>
-          </div>
-
-          <div style={{ position: 'relative', marginBottom: '15px' }}>
-            <input
-              type={showPassword ? 'text' : 'password'}
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid white', color: 'white', background: 'transparent' }}
-              required
-            />
-            <i
-              onClick={togglePasswordVisibility}
-              className={`fa ${showPassword ? 'fa-eye' : 'fa-eye-slash'}`}
-              style={{ position: 'absolute', top: '50%', right: '10px', transform: 'translateY(-50%)', color: showPassword ? 'cyan' : 'white', cursor: 'pointer' }}
-            ></i>
-          </div>
-
-          <div style={{ position: 'relative', marginBottom: '15px' }}>
-            <input
-              type={showConfirmPassword ? 'text' : 'password'}
-              placeholder="Confirm Password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid white', color: 'white', background: 'transparent' }}
-              required
-            />
-            <i
-              onClick={toggleConfirmPasswordVisibility}
-              className={`fa ${showConfirmPassword ? 'fa-eye' : 'fa-eye-slash'}`}
-              style={{ position: 'absolute', top: '50%', right: '10px', transform: 'translateY(-50%)', color: showConfirmPassword ? 'cyan' : 'white', cursor: 'pointer' }}
-            ></i>
-          </div>
-
-          {error && <div style={{ color: 'red', fontSize: '0.65em', paddingLeft: '5px' }}>{error}</div>}
-
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
-            <div>
-              <input type="checkbox" id="checkbox1" />
-              <label htmlFor="checkbox1" style={{ marginLeft: '5px' }}>Remember me</label>
-            </div>
-            <a href="#" style={{ color: 'cyan' }}>Forget Password?</a>
-          </div>
-
-          <button type="submit" style={{ width: '100%', padding: '10px', borderRadius: '5px', background: 'white', color: 'black', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
-            SIGN UP
-          </button>
-        </form>
-        <div style={{ textAlign: 'center', marginTop: '15px' }}>
-          <p>Already have an account? <Link to="/sign-in" className="button-secondary">Sign In</Link></p>
+    <>
+    <div className="signup-header">
+        <h2>Start Building Your Dream Team!</h2>
+      </div>
+    <div className="form-container">
+    
+      <h1>SIGN UP</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Full Name"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
         </div>
+
+        <div className="form-group">
+          <input
+            type="tel"
+            placeholder="Phone Number"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <input
+            type={showPassword ? 'text' : 'password'}
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <i
+            onClick={togglePasswordVisibility}
+            className={`fa ${showPassword ? 'fa-eye' : 'fa-eye-slash'} password-toggle`}
+          />
+        </div>
+
+        <div className="form-group">
+          <input
+            type={showConfirmPassword ? 'text' : 'password'}
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+          <i
+            onClick={toggleConfirmPasswordVisibility}
+            className={`fa ${showConfirmPassword ? 'fa-eye' : 'fa-eye-slash'} password-toggle`}
+          />
+        </div>
+
+        {error && <div className="error">{error}</div>}
+
+        <div className="remember-me-container">
+          <div>
+            <input type="checkbox" id="checkbox1" />
+            <label htmlFor="checkbox1" style={{ marginLeft: '5px' }}>Remember me</label>
+          </div>
+          <a href="#">Forget Password?</a>
+        </div>
+
+        <button className='button1' type="submit">SIGN UP</button>
+      </form>
+
+      <div className="link-container">
+        <p>Already have an account? <Link to="/sign-in">Sign In</Link></p>
       </div>
     </div>
+    </>
   );
 };
 

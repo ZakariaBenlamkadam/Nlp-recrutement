@@ -1,84 +1,115 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate
+import { Link, useNavigate } from 'react-router-dom';  // Import necessary hooks
 import axios from 'axios';  // Import axios for making HTTP requests
-import { Link } from 'react-router-dom';
+import './SignIn.css';
+import eyeOpenIcon from './assets/eyeopen.png';  // Import eye open icon
+import eyeClosedIcon from './assets/eyeclosed.png';  // Import eye closed icon
+import emailIcon from './assets/mail.png'
 
-const SignIn = ({ setIsAuthenticated }) => {  // Receive setIsAuthenticated as a prop
+export default function SignIn({ setIsAuthenticated }) {
+  const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
-  const navigate = useNavigate();  // Initialize useNavigate
+  const navigate = useNavigate();  // Use navigate for redirection
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!email || !password) {
+      setError('Please fill in all fields');
+      return;
+    }
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
     try {
       const response = await axios.post('/login', { email, password });
       if (response.data.success) {
-        localStorage.setItem('isAuthenticated', 'true');  // Store authentication state
+        localStorage.setItem('isAuthenticated', 'true');
         setIsAuthenticated(true);  // Update authentication state
         navigate(response.data.redirect);  // Navigate to the appropriate page
       } else {
-        setError(response.data.error);
+        window.alert(response.data.error || 'Login failed. Please check your credentials.');
       }
     } catch (error) {
-      setError('An error occurred. Please try again.');
+      window.alert('An error occurred. Please try again.');
     }
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <div style={{ width: '300px', padding: '20px', borderRadius: '10px', background: 'rgba(0, 0, 0, 0.6)', color: 'white' }}>
-        <h1 style={{ textAlign: 'center' }}>LOGIN</h1>
-        <form onSubmit={handleSubmit}>
-          <div style={{ position: 'relative', marginBottom: '15px' }}>
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid white', color: 'white', background: 'transparent' }}
-              required
-            />
-            <i className='fa fa-envelope' style={{ position: 'absolute', top: '50%', right: '10px', transform: 'translateY(-50%)', color: 'white' }}></i>
-          </div>
-          <div style={{ position: 'relative', marginBottom: '15px' }}>
-            <input
-              type={showPassword ? 'text' : 'password'}
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid white', color: 'white', background: 'transparent' }}
-              required
-            />
-            <i
-              onClick={togglePasswordVisibility}
-              className={`fa ${showPassword ? 'fa-eye' : 'fa-eye-slash'}`}
-              style={{ position: 'absolute', top: '50%', right: '10px', transform: 'translateY(-50%)', color: showPassword ? 'cyan' : 'white', cursor: 'pointer' }}
-            ></i>
-          </div>
-          {error && <div style={{ color: 'red', fontSize: '0.65em', paddingLeft: '35px' }}>{error}</div>}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
-            <div>
-              <input type="checkbox" id="checkbox" />
-              <label htmlFor="checkbox" style={{ marginLeft: '5px' }}>Remember me</label>
+    <div className="login-container">
+      <div className="login-header">
+        <h2>The Search for Talent Begins Here!</h2>
+      </div>
+
+      <div className="login-form-container">
+        <div className="login-form">
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="email">Email address</label>
+              <div className="input-wrapper">
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+                <img
+                    src= {emailIcon}
+                    alt='email'
+                    className="icon mail-icon"
+                  />
+              </div>
             </div>
-            <a href="#" style={{ color: 'cyan' }}>Forget Password?</a>
+
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <div className="input-wrapper">
+                <input
+                  id="password"
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <button
+                  type="button"
+                  className="password-toggle"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  <img
+                    src={showPassword ? eyeClosedIcon : eyeOpenIcon}
+                    alt={showPassword ? 'Hide Password' : 'Show Password'}
+                    className="password-toggle-icon"
+                  />
+                </button>
+              </div>
+            </div>
+
+            {error && <div className="error-message">{error}</div>}
+
+            <div className="form-options">
+              <div>
+                <input type="checkbox" id="remember-me" />
+                <label htmlFor="remember-me">Remember me</label>
+              </div>
+
+              <Link to="/forgot-password" className="forgot-password">
+                Forgot your password?
+              </Link>
+            </div>
+
+            <button type="submit" className="login-button">LOGIN</button>
+          </form>
+
+          <div className="sign-up-option">
+            <p>Don't have an account?</p>
+            <Link to="/sign-up" className="signup-text">Sign Up</Link>
           </div>
-          <button type="submit" style={{ width: '100%', padding: '10px', borderRadius: '5px', background: 'white', color: 'black', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
-            LOGIN
-          </button>
-        </form>
-        <div style={{ textAlign: 'center', marginTop: '15px' }}>
-          <p>Don't have an account? <Link to="/sign-up" className="button-secondary">Sign Up</Link></p>
         </div>
       </div>
     </div>
   );
-};
-
-export default SignIn;
+}
