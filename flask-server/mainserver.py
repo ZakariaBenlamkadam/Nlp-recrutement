@@ -30,6 +30,14 @@ import bcrypt
 app = Flask(__name__)
 CORS(app)
 
+# Initialize LangChain Groq model
+llm = "llama-3.1-70b-versatile"
+model = ChatGroq(
+    model_name=llm,
+    temperature=0,
+    groq_api_key='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'
+)
+
 
 app.secret_key = secrets.token_hex()
 login_manager = LoginManager()
@@ -168,13 +176,6 @@ def calcul_cosine_similarity(chroma_client, resumes_collection_name, jobs_collec
     return df_with_scores
 
 
-# Initialize LangChain Groq model
-llm = "llama-3.1-70b-versatile"
-model = ChatGroq(
-    model_name=llm,
-    temperature=0,
-    groq_api_key='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'
-)
 
 def retry_request(func, *args, **kwargs):
     max_retries = 3
@@ -338,7 +339,166 @@ def embedding_chuncking(df, chroma_client, collection_name, model_name="sentence
     index = VectorStoreIndex(nodes, embed_model=embed_model, storage_context=storage_context)
     print(f"Collection {collection_name} created and indexed.")
 
+def extract_skills_and_projects_from_resume(resume_text):
+    prompt = f"""
+    Please provide:
+    1. A list of **general skills and technologies** that are not specifically tied to any project.
+    2. For each project:
+       - The project name.
+       - A brief summary of what the user did in the project.
+       - A list of **skills and technologies** used specifically for the project (these should not be included in the general skills list).
 
+    Ensure there is no overlap between the general skills list and the project-specific skills list.
+
+    resume : {resume_text}
+
+    Format the output as (don't add any additional text):
+
+    General Skills: [comma-separated list of general skills and technologies]
+    Projects:
+    1. Project Name: [name]
+       Summary: [brief summary of the user's role or achievements in the project]
+       Skills Used: [comma-separated list of skills and technologies used in this project]
+    """
+
+    try:
+        prompt_temp = PromptTemplate(input_variables=["resume_text"], template=prompt)
+        chain = prompt_temp | model
+        extracted_info = chain.invoke({'resume_text': resume_text}).content.strip()
+
+        # Process the raw output into the desired format
+        result = {"general_skills": [], "projects": {}}
+
+        # Splitting the sections
+        sections = extracted_info.split("Projects:")
+        general_skills = sections[0].replace("General Skills:", "").strip().split(",")
+        result["general_skills"] = [skill.strip() for skill in general_skills if skill.strip()]
+
+        # Extracting projects
+        projects = sections[1].split("\n\n")
+        project_counter = 1
+        for project in projects:
+            if "Project Name" in project:
+                name_line = [line for line in project.split("\n") if "Project Name" in line][0]
+                summary_line = [line for line in project.split("\n") if "Summary" in line][0]
+                skills_line = [line for line in project.split("\n") if "Skills Used" in line][0]
+
+                project_name = name_line.replace("Project Name:", "").strip()
+                project_summary = summary_line.replace("Summary:", "").strip()
+                project_skills = skills_line.replace("Skills Used:", "").strip().split(",")
+                project_skills = [skill.strip() for skill in project_skills if skill.strip()]
+
+                result["projects"][f"project{project_counter}"] = {
+                    "project_name": project_name,
+                    "summary": project_summary,
+                    "skills_used": project_skills
+                }
+                project_counter += 1
+
+        return result
+    except Exception as e:
+        print(f"Error extracting skills and projects: {e}")
+        return {}
+
+def generate_questions_from_skill_project(category, skill_or_project, skill):
+    if not skill:
+        num_questions = 5
+        x = "project"
+    else:
+        num_questions = 3
+        x = "skill"
+
+    prompt = f"""
+    Act like a recruiter conducting an interview (don't ask for the code). Based on the {x}: {skill_or_project}, generate {num_questions} interview questions.
+
+    Please provide the questions in the following format:
+    Question: [question content]
+    Difficulty: [question difficulty - Easy/Medium/Hard]
+    Category: [question category]
+
+    Ensure there is no extra formatting or symbols before the difficulty level or question content.
+    """
+
+    try:
+        prompt_temp = PromptTemplate(input_variables=["category", "skill_or_project"], template=prompt)
+        chain = prompt_temp | model
+        questions_raw = chain.invoke({'skill_or_project': skill_or_project, 'category': category}).content.strip()
+
+        questions = []
+        question = None
+        for line in questions_raw.split('\n'):
+            if line.startswith("Question:"):
+                question = line.replace("Question:", "").strip()
+            elif line.startswith("Difficulty:"):
+                difficulty = line.replace("Difficulty:", "").strip()
+                if question:
+                    questions.append({'text': question, 'difficulty': difficulty, 'category': category})
+                    question = None
+        return questions
+    except Exception as e:
+        print(f"Error generating questions: {e}")
+        return []
+
+def generate_feedback_from_llm(question_text, user_answer):
+    prompt = f"""
+    You are an interviewer providing brief and concise feedback to my answer. (don't ask questions in the feedback)
+    Keep the feedback to the point and also give an indicator score (0-10) on whether my answer is sufficient to move to a higher difficulty level or if it requires a change.
+
+    Follow these guidelines for the indicator score:
+    - 0-4 : Decrease the difficulty level if possible.
+    - 5-6 : Keep the difficulty level the same.
+    - 7-10 : Increase the difficulty level if possible.
+
+    Question: {question_text}
+    Answer: {user_answer}
+
+    output format
+    Feedback :
+    Indicator: 0-10
+    """
+    try:
+        prompt_temp = PromptTemplate(input_variables=["question_text", "user_answer"], template=prompt)
+        chain = prompt_temp | model
+        response = chain.invoke({'question_text': question_text, 'user_answer': user_answer})
+        feedback_raw = response.content.strip()
+        feedback_lines = feedback_raw.split('\n')
+
+        feedback = ""
+        indicator = 6  # Default indicator value
+
+        for line in feedback_lines:
+            if "Indicator:" in line:
+                indicator = int(line.split(":")[1].strip())
+            else:
+                feedback += line + "\n"
+
+        return feedback.strip(), indicator
+    except Exception as e:
+        return "Error generating feedback. No feedback available.", 6
+
+@app.route('/extract', methods=['POST'])
+def extract_skills_and_projects():
+    data = request.json
+    resume_text = data.get('resume_text', '')
+    result = extract_skills_and_projects_from_resume(resume_text)
+    return jsonify(result)
+
+@app.route('/questions', methods=['POST'])
+def generate_questions1():
+    data = request.json
+    category = data.get('category', 'Data Science')
+    skill_or_project = data.get('skill_or_project', '')
+    skill = data.get('skill', True)
+    questions = generate_questions_from_skill_project(category, skill_or_project, skill)
+    return jsonify(questions)
+
+@app.route('/feedback', methods=['POST'])
+def generate_feedback():
+    data = request.json
+    question_text = data.get('question_text', '')
+    user_answer = data.get('user_answer', '')
+    feedback, indicator = generate_feedback_from_llm(question_text, user_answer)
+    return jsonify({"feedback": feedback, "indicator": indicator})
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/login', methods=['POST'])
@@ -604,7 +764,7 @@ def upload_files():
         return jsonify({'error': str(e)}), 500
 
 @app.route('/generate-resume-questions', methods=['POST'])
-def generate_questions1():
+def generate_questions2():
     try:
         data = request.json
         resume_text = data.get('resume_text', '')

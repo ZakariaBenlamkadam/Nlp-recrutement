@@ -6,10 +6,15 @@ export default function Main() {
   const [error, setError] = useState('');
   const [jobDescription, setJobDescription] = useState('');
   const [resumeFile, setResumeFile] = useState(null);
-  const [questions, setQuestions] = useState([]); // State to hold generated questions
-  const [selectedResume, setSelectedResume] = useState(null); // State to hold the selected resume for questions
-  const [showModal, setShowModal] = useState(false); // State to control modal visibility
-
+  const [questions, setQuestions] = useState([]);
+  const [selectedResume, setSelectedResume] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [feedbackModal, setFeedbackModal] = useState(false); // State to control feedback modal visibility
+  const [selectedQuestion, setSelectedQuestion] = useState(null); // State to hold selected question for feedback
+  const [userAnswer, setUserAnswer] = useState(''); // State to hold user's answer
+  const [feedback, setFeedback] = useState({}); // Initialize as an empty object
+  const [userAnswers, setUserAnswers] = useState({}); 
+  const [feedbackMessage, setFeedbackMessage] = useState({}); // Initialize as an empty object
   const handleFileChange = (event) => {
     setResumeFile(event.target.files[0]);
   };
@@ -46,6 +51,7 @@ export default function Main() {
   };
 
   const handleGenerateQuestions = async (resumeText) => {
+    setSelectedResume(resumeText);
     try {
       const response = await fetch('http://127.0.0.1:5000/generate-questions', {
         method: 'POST',
@@ -60,8 +66,49 @@ export default function Main() {
       }
 
       const questionsData = await response.json();
-      setQuestions(questionsData);
-      setShowModal(true);
+      setQuestions(questionsData); // Set questions AFTER fetching the data
+      setShowModal(true); 
+    } catch (error) {
+      console.error('There was a problem with the fetch operation:', error);
+    }
+  };
+
+
+  const handleGenerateFeedback = async (question) => {
+    if (!userAnswers[question.text]) return; // Check if an answer exists
+
+    try {
+      const response = await fetch('http://127.0.0.1:5000/feedback', {
+        method: 'POST',
+        body: JSON.stringify({ question_text: question.text, user_answer: userAnswers[question.text] }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const feedbackData = await response.json();
+      setFeedback({
+        ...feedback,
+        [question.text]: feedbackData, // Store feedback for this question
+      });
+
+      // Determine the feedback message based on the indicator score
+      let message = "";
+      if (feedbackData.indicator >= 0 && feedbackData.indicator <= 4) {
+        message = "Decrease the difficulty level if possible.";
+      } else if (feedbackData.indicator >= 5 && feedbackData.indicator <= 6) {
+        message = "Keep the difficulty level the same.";
+      } else if (feedbackData.indicator >= 7 && feedbackData.indicator <= 10) {
+        message = "Increase the difficulty level if possible.";
+      }
+      setFeedbackMessage({
+        ...feedbackMessage,
+        [question.text]: message, // Store message for this question
+      });
     } catch (error) {
       console.error('There was a problem with the fetch operation:', error);
     }
@@ -70,6 +117,8 @@ export default function Main() {
   const closeModal = () => {
     setShowModal(false);
     setQuestions([]);
+    setFeedback({}); // Reset feedback when closing the modal
+    setFeedbackMessage({}); // Reset feedback messages
   };
 
   return (
@@ -124,6 +173,12 @@ export default function Main() {
                 >
                   Generate Questions
                 </button>
+                <button
+                  className="generate-feedback-button"
+                  onClick={() => handleGenerateFeedback(result.cv_text)}
+                >
+                  Generate Feedback
+                </button>
               </div>
             ))}
           </div>
@@ -134,11 +189,36 @@ export default function Main() {
               <h2 className="modal-title">Generated Questions</h2>
               <button className="close-modal-button" onClick={closeModal}>Close</button>
               <div className="questions">
-                {questions.map((question, index) => (
+                {questions.length > 0 && questions.map((question, index) => (
                   <div className="question-card" key={index}>
                     <div className="question-text">{question.text}</div>
                     <div className="question-difficulty">{question.difficulty}</div>
                     <div className="question-category">{question.category}</div>
+                    <input
+                      type="text"
+                      placeholder="Your answer"
+                      value={userAnswers[question.text] || ''}
+                      onChange={(e) => {
+                        setUserAnswers({
+                          ...userAnswers,
+                          [question.text]: e.target.value,
+                        });
+                      }}
+                    />
+                    <button
+                      className="submit-feedback-button"
+                      onClick={() => handleGenerateFeedback(question)}
+                    >
+                      Submit Answer
+                    </button>
+                    {/* Render feedback only if it exists for this question */}
+                    {feedback[question.text] && (
+                      <div className="feedback-section">
+                        <div className="feedback-text">{feedback[question.text].feedback}</div>
+                        <div className="feedback-indicator">Indicator: {feedback[question.text].indicator}</div>
+                        <div className="difficulty-advice">{feedbackMessage[question.text]}</div>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

@@ -36,7 +36,8 @@ function LandingPage() {
                         <div className="hero-content">
                             <h1>Unlock Smarter Hiring with TalentQuest</h1>
                             <p>Our AI-powered platform helps recruiters find the best resume matches for their job descriptions and generates tailored interview questions to streamline the hiring process.</p>
-                            <button className="button-primary1">Get Started</button>
+                            <Link to="/sign-in" className="button-primary1">Get Started</Link>
+                            
                         </div>
                         <div className="hero-image">
                             <img src="./rec.jpg" alt="Hero" />

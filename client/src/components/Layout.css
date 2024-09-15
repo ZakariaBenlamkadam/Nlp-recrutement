@@ -385,3 +385,21 @@
     }
   }
   
+  /* Responsive Styles */
+  @media (max-width: 300px) {
+    .main-content {
+      flex: 1;
+      margin-left: 0px;
+      padding: 20px;
+      background-color: #fdc903;
+      background-image: url('bgg.png');  /* Background image from public folder */
+      background-size: cover;  /* Ensures the image covers the whole container */
+      background-position: center;  /* Centers the image */
+      background-repeat: no-repeat; 
+    }
+    
+    .main-content.shifted {
+      margin-left: 0px;
+    }
+  }
+  
