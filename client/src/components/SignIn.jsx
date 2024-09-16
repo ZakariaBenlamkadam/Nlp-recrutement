@@ -44,7 +44,7 @@ export default function SignIn({ setIsAuthenticated }) {
       <div className="login-form-container">
         <div className="login-form">
           <form onSubmit={handleSubmit}>
-            <div className="form-group">
+            <div className="form-group2">
               <label htmlFor="email">Email address</label>
               <div className="input-wrapper">
                 <input
@@ -63,7 +63,7 @@ export default function SignIn({ setIsAuthenticated }) {
               </div>
             </div>
 
-            <div className="form-group">
+            <div className="form-group2">
               <label htmlFor="password">Password</label>
               <div className="input-wrapper">
                 <input

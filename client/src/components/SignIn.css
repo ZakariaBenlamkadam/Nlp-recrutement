@@ -37,11 +37,11 @@ body {
     width: 100%;
   }
   
-  .form-group {
+  .form-group2 {
     margin-bottom: 20px;
   }
   
-  .form-group label {
+  .form-group2 label {
     display: block;
     font-size: 1rem;
     margin-bottom: 5px;
@@ -76,8 +76,7 @@ input[type="text"] {  /* Add "text" so both password and text input types are st
   }
   
   .mail-icon {
-    width: 20px;  
-    height: 20px;
+    width: 18px;
     padding-bottom: 8px;
 
   }

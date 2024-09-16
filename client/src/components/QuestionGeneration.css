@@ -51,12 +51,13 @@
 .questiongeneration-generate-button {
     width: 100%;
     padding: 12px;
-    background-color: #001f3f !important; /* Primary color */
+    background-color: #ce9f07 !important; /* Primary color */
     color: white;
     border: none;
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
+    font-weight: bold;
     transition: background-color 0.3s ease;
     margin-bottom: 20px;
 }
@@ -86,7 +87,8 @@
 }
 
 .questiongeneration-badge {
-    background-color: #0070f3; /* Primary color */
+    background-color: #001f3f; 
+    width: 80px;
     color: white;
     padding: 8px 12px;
     border-radius: 4px;
