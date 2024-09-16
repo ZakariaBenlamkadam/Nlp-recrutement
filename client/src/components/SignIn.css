@@ -132,7 +132,7 @@ input[type="text"] {  /* Add "text" so both password and text input types are st
     width: 100%;
     padding: 10px;
     background-color: #001f3f;
-    color: #fff;
+    color: #fdc903;
     border: none;
     border-radius: 5px;
     font-size: 1rem;
@@ -140,7 +140,8 @@ input[type="text"] {  /* Add "text" so both password and text input types are st
   }
   
   .login-button:hover {
-    background-color: #0e355c;
+    background-color: #fdc903;
+    color: #001f3f;
   }
   
   .sign-up-option {

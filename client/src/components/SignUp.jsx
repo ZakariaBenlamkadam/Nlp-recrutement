@@ -133,19 +133,22 @@ const SignUp = () => {
 
         {error && <div className="error">{error}</div>}
 
-        <div className="remember-me-container">
-          <div>
-            <input type="checkbox" id="checkbox1" />
-            <label htmlFor="checkbox1" style={{ marginLeft: '5px' }}>Remember me</label>
-          </div>
-          <a href="#">Forget Password?</a>
-        </div>
+        <div className="form-options">
+              <div>
+                <input type="checkbox" id="remember-me" />
+                <label htmlFor="remember-me">Remember me</label>
+              </div>
 
-        <button className='button1' type="submit">SIGN UP</button>
+              <Link to="/forgot-password" className="forgot-password">
+                Forgot your password?
+              </Link>
+            </div>
+
+          <button className='button1' type="submit">SIGN UP</button>
       </form>
 
       <div className="link-container">
-        <p>Already have an account? <Link to="/sign-in">Sign In</Link></p>
+        <p>Already have an account? <Link to="/sign-in" className='forget-password'>Sign In</Link></p>
       </div>
     </div>
     </>

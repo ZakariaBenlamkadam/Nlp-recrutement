@@ -34,11 +34,19 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
+  align-items: center; /* Center contents horizontally within form-group */
+  width: 100%;
+}
+.form-group1 {
+  display: flex;
+  flex-direction: column;
+  
 }
 
 .label {
@@ -53,6 +61,7 @@
   border: 1px solid #ddd;
   border-radius: 4px;
   background-color: #ffffff;
+  width: 100%;
 }
 
 .submit-button {
@@ -68,7 +77,7 @@
 }
 
 .submit-button:hover {
-  background-color: #005bb5; /* Darker shade for hover */
+  background-color: #ce9f07; /* Darker shade for hover */
 }
 
 
@@ -281,4 +290,37 @@
   font-weight: bold;
   color: #e67e22; /* Orange color for difficulty advice */
   margin-bottom: 0;
+}
+
+
+/* Main.css */
+.custom-fileupload .p-button-label {
+  content: "Upload a CSV"; /* Set the custom text */
+}
+
+.custom-fileupload .p-button {
+  background-color: #001f3f; /* Button background color */
+  color: white; /* Button text color */
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+}
+
+.custom-fileupload .p-button:hover {
+  background-color: #ce9f07; /* Hover color */
+}
+
+.generate-questions-button {
+  padding: 12px;
+  background-color: #001f3f; /* Primary color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.generate-questions-button:hover {
+  background-color: #ce9f07; /* Darker shade for hover */
 }

@@ -49,17 +49,27 @@ body {
     width: 100%;
     padding: 12px;
     margin-top: 10px;
-    background-color: #4a90e2;
-    color: white;
+    background-color: #001f3f;
+    color: #fdc903;
     border: none;
     border-radius: 5px;
     font-size: 16px;
-    font-weight: bold;
     cursor: pointer;
   }
   
   .button1:hover {
-    background-color: #357abd;
+    background-color: #fdc903;
+    color: #001f3f;
+  }
+
+  .forget-pass {
+    color: #001f3f;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  
+  .forget-pass:hover {
+    text-decoration: underline;
   }
   .signup-header {
     font-size: 20px;
@@ -111,7 +121,7 @@ body {
   }
   
   .link-container a {
-    color: #4a90e2;
+    color: #001f3f;
     text-decoration: none;
   }
   

@@ -1,10 +1,14 @@
 /* General Layout */
 .app-container {
     display: flex;
-    flex-direction: column; /* Stack children vertically */
-    min-height: 100vh; /* Full viewport height */
+    flex-direction: column; 
+    min-height: 100vh; 
     background-color: #fdc903;
     font-family: Arial, sans-serif;
+}
+
+.footer{
+  background-color: #001f3f;
 }
   
   /* Sidebar */
@@ -18,7 +22,7 @@
     height: 100%;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
-    z-index: 1000; /* Ensure the sidebar appears above other content */
+    z-index: 1000; 
 }
   
   .sidebar.open {
@@ -97,7 +101,7 @@
     cursor: pointer;
     font-weight: bold;
     text-align: center;
-    color: inherit; /* Inherit color from the button */
+    color: inherit; 
     text-decoration: none;
 }
   .button-secondary1 {
@@ -109,13 +113,13 @@
     border-radius: 4px;
     cursor: pointer;
     text-align: center;
-    color: inherit; /* Inherit color from the button */
+    color: inherit; 
     text-decoration: none;
   }
 
   .no-link-style {
-    color: inherit; /* Inherit color from the button */
-    text-decoration: none; /* Remove underline */
+    color: inherit; 
+    text-decoration: none; 
 }
 
   
@@ -140,9 +144,9 @@
     padding: 20px;
     transition: margin-left 0.3s ease;
     background-color: #fdc903;
-    background-image: url('bgg.png');  /* Background image from public folder */
-    background-size: cover;  /* Ensures the image covers the whole container */
-    background-position: center;  /* Centers the image */
+    background-image: url('bgg.png');  
+    background-size: cover;  
+    background-position: center;  
     background-repeat: no-repeat; 
   }
   
@@ -161,7 +165,7 @@
     background: linear-gradient(90deg, #eabc11, #eabc11);
   }
   
-  /* Align the logo to the left */
+  
   .header-logo {
     display: flex;
     align-items: center;
@@ -177,13 +181,13 @@
 
   }
   
-  /* Align the nav links and button to the right */
+  
   .header-nav {
     display: flex;
     gap: 20px;
     align-items: center;
-    justify-self: flex-end; /* Align to the right */
-    margin-right: 70px; /* Add this line to position the nav 5px away from the right */
+    justify-self: flex-end; 
+    margin-right: 70px; 
   
   }
   
@@ -292,7 +296,6 @@
     margin-left: 200px;
   }
   .footer {
-    background-color: #2d2d2d;
     color: white;
     margin-left: 0;
     padding: 20px;
@@ -303,6 +306,7 @@
   }
   .footer.shifted {
     margin-left: 200px;
+    background-color: #001f3f;
   }
   
   .footer-content {
@@ -347,8 +351,7 @@
       justify-content: space-between;
       align-items: center;
       position: relative; 
-      background-color: #ffffff;
-      border-bottom: 1px solid #e7dfdf;
+      
     }
   
     .header-nav {
@@ -375,8 +378,6 @@
       top: 40px; 
       z-index: 1001; 
       transition: opacity 0.3s ease; 
-    
-    
     }
     
   
@@ -392,9 +393,9 @@
       margin-left: 0px;
       padding: 20px;
       background-color: #fdc903;
-      background-image: url('bgg.png');  /* Background image from public folder */
-      background-size: cover;  /* Ensures the image covers the whole container */
-      background-position: center;  /* Centers the image */
+      background-image: url('bgg.png');  
+      background-size: cover;  
+      background-position: center;  
       background-repeat: no-repeat; 
     }
     

@@ -1,4 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { FileUpload } from 'primereact/fileupload'; 
+import { Toast } from 'primereact/toast'; 
+import 'primereact/resources/themes/saga-blue/theme.css'; 
+import 'primereact/resources/primereact.min.css'; 
+import 'primeicons/primeicons.css'; 
 import './Main.css';
 
 export default function Main() {
@@ -9,14 +14,15 @@ export default function Main() {
   const [questions, setQuestions] = useState([]);
   const [selectedResume, setSelectedResume] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [feedbackModal, setFeedbackModal] = useState(false); // State to control feedback modal visibility
-  const [selectedQuestion, setSelectedQuestion] = useState(null); // State to hold selected question for feedback
-  const [userAnswer, setUserAnswer] = useState(''); // State to hold user's answer
-  const [feedback, setFeedback] = useState({}); // Initialize as an empty object
+  const [feedback, setFeedback] = useState({}); 
   const [userAnswers, setUserAnswers] = useState({}); 
-  const [feedbackMessage, setFeedbackMessage] = useState({}); // Initialize as an empty object
-  const handleFileChange = (event) => {
-    setResumeFile(event.target.files[0]);
+  const [feedbackMessage, setFeedbackMessage] = useState({}); 
+
+
+  const toast = useRef(null);
+
+  const onUpload = () => {
+    toast.current.show({ severity: 'info', summary: 'Success', detail: 'File Uploaded' });
   };
 
   const handleSubmit = async (e) => {
@@ -117,8 +123,8 @@ export default function Main() {
   const closeModal = () => {
     setShowModal(false);
     setQuestions([]);
-    setFeedback({}); // Reset feedback when closing the modal
-    setFeedbackMessage({}); // Reset feedback messages
+    setFeedback({}); 
+    setFeedbackMessage({}); 
   };
 
   return (
@@ -129,15 +135,20 @@ export default function Main() {
           <form className="form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="resume" className="label">Upload Resume</label>
-              <input
-                id="resume"
-                type="file"
+              <FileUpload
+                mode="basic"
+                name="demo[]"
+                url="/api/upload"
                 accept=".csv"
-                className="file-input"
-                onChange={handleFileChange}
+                maxFileSize={1000000}
+                onUpload={onUpload}
+                onSelect={(e) => setResumeFile(e.files[0])}  
+                className="custom-fileupload" 
               />
+
+
             </div>
-            <div className="form-group">
+            <div className="form-group1">
               <label htmlFor="job-description" className="label">Job Description</label>
               <textarea
                 id="job-description"
@@ -153,7 +164,6 @@ export default function Main() {
           </form>
         </div>
         <div className="results-container">
-          <h2 className="results-title">Results</h2>
           <div className="cards">
             {results.map((result, index) => (
               <div className="card" key={index}>
@@ -173,12 +183,7 @@ export default function Main() {
                 >
                   Generate Questions
                 </button>
-                <button
-                  className="generate-feedback-button"
-                  onClick={() => handleGenerateFeedback(result.cv_text)}
-                >
-                  Generate Feedback
-                </button>
+                
               </div>
             ))}
           </div>

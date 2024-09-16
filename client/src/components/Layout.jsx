@@ -99,7 +99,7 @@ function Layout() {
                 </header>
 
                 <main>
-                    <Outlet /> {/* This is where the routed content will be rendered */}
+                    <Outlet /> 
                 </main>
             </div>
             <footer className={`footer ${isSidebarOpen ? 'shifted' : ''}`}>
