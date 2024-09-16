@@ -17,7 +17,7 @@ export default function Main() {
   const [feedback, setFeedback] = useState({}); 
   const [userAnswers, setUserAnswers] = useState({}); 
   const [feedbackMessage, setFeedbackMessage] = useState({}); 
-
+  const [resultsLoaded, setResultsLoaded] = useState(false); // New state variable
 
   const toast = useRef(null);
 
@@ -49,6 +49,7 @@ export default function Main() {
 
       const data = await response.json();
       setResults(data);
+      setResultsLoaded(true); // Set resultsLoaded to true
       setError('');
     } catch (error) {
       console.error('There was a problem with the fetch operation:', error);
@@ -129,8 +130,8 @@ export default function Main() {
 
   return (
     <div>
-      <main className="main">
-        <div className="form-container">
+      <main>
+        <div className={`form-container1 ${resultsLoaded ? 'results-loaded' : ''}`}> {/* Conditional class */}
           <h1 className="main-title">Find the Perfect Candidate</h1>
           <form className="form" onSubmit={handleSubmit}>
             <div className="form-group">
@@ -145,8 +146,6 @@ export default function Main() {
                 onSelect={(e) => setResumeFile(e.files[0])}  
                 className="custom-fileupload" 
               />
-
-
             </div>
             <div className="form-group1">
               <label htmlFor="job-description" className="label">Job Description</label>
@@ -183,7 +182,6 @@ export default function Main() {
                 >
                   Generate Questions
                 </button>
-                
               </div>
             ))}
           </div>
@@ -192,7 +190,7 @@ export default function Main() {
           <div className="modal-overlay" onClick={closeModal}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
               <h2 className="modal-title">Generated Questions</h2>
-              <button className="close-modal-button" onClick={closeModal}>Close</button>
+              <button className="close-modal-button" onClick={closeModal}>x</button>
               <div className="questions">
                 {questions.length > 0 && questions.map((question, index) => (
                   <div className="question-card" key={index}>
@@ -200,6 +198,7 @@ export default function Main() {
                     <div className="question-difficulty">{question.difficulty}</div>
                     <div className="question-category">{question.category}</div>
                     <input
+                      className='input-text'
                       type="text"
                       placeholder="Your answer"
                       value={userAnswers[question.text] || ''}
