@@ -85,7 +85,7 @@ export default function Main() {
     if (!userAnswers[question.text]) return; // Check if an answer exists
 
     try {
-      const response = await fetch('http://127.0.0.1:5000/feedback', {
+      const response = await fetch('/feedback', {
         method: 'POST',
         body: JSON.stringify({ question_text: question.text, user_answer: userAnswers[question.text] }),
         headers: {
