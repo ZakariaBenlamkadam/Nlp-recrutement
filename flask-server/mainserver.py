@@ -787,5 +787,14 @@ def generate_questions2():
         print(f"Error: {e}")
         return jsonify({'error': str(e)}), 500
 
+def create_tables():
+    # Creates new tables in the database.db database if they do not already exist.
+    conn = sqlite3.connect('database3.db')
+    c = conn.cursor()
+    with current_app.open_resource("schema.sql") as f:
+        c.executescript(f.read().decode("utf8"))
+    conn.commit()
+    conn.close()
 if __name__ == "__main__":
+    create_tables()
     app.run(debug=True)
