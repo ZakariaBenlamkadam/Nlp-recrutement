@@ -794,7 +794,7 @@ def create_tables():
     with current_app.open_resource("schema.sql") as f:
         c.executescript(f.read().decode("utf8"))
     conn.commit()
-    conn.close()
+    conn.close()
 if __name__ == "__main__":
     create_tables()
     app.run(debug=True)
