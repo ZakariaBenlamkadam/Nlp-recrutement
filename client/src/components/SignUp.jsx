@@ -38,7 +38,7 @@ const SignUp = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/register', { // Update with your API endpoint
+      const response = await fetch('/register', { // Update with your API endpoint
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',

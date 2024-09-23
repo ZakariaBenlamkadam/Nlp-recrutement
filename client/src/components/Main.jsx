@@ -38,7 +38,7 @@ export default function Main() {
     formData.append('job_description', jobDescription);
 
     try {
-      const response = await fetch('http://127.0.0.1:5000/upload', {
+      const response = await fetch('http://localhost:5000/upload', {
         method: 'POST',
         body: formData,
       });
@@ -60,7 +60,7 @@ export default function Main() {
   const handleGenerateQuestions = async (resumeText) => {
     setSelectedResume(resumeText);
     try {
-      const response = await fetch('http://127.0.0.1:5000/generate-questions', {
+      const response = await fetch('http://localhost:5000/generate-questions', {
         method: 'POST',
         body: JSON.stringify({ results: [{ cv_text: resumeText }] }),
         headers: {
@@ -85,7 +85,7 @@ export default function Main() {
     if (!userAnswers[question.text]) return; // Check if an answer exists
 
     try {
-      const response = await fetch('http://127.0.0.1:5000/feedback', {
+      const response = await fetch('/feedback', {
         method: 'POST',
         body: JSON.stringify({ question_text: question.text, user_answer: userAnswers[question.text] }),
         headers: {
