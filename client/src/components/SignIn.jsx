@@ -22,7 +22,7 @@ export default function SignIn({ setIsAuthenticated }) {
     }
 
     try {
-      const response = await axios.post('/login', { email, password });
+      const response = await axios.post('http://localhost:5000/login', { email, password });
       if (response.data.success) {
         localStorage.setItem('isAuthenticated', 'true');
         setIsAuthenticated(true);  // Update authentication state

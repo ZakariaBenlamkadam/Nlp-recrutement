@@ -28,8 +28,7 @@ import bcrypt
 
 
 app = Flask(__name__)
-CORS(app)
-
+CORS(app, resources={r"/*": {"origins": ["http://localhost:3000"]}})
 # Initialize LangChain Groq model
 llm = "llama-3.1-70b-versatile"
 model = ChatGroq(
@@ -500,28 +499,33 @@ def generate_feedback():
     feedback, indicator = generate_feedback_from_llm(question_text, user_answer)
     return jsonify({"feedback": feedback, "indicator": indicator})
 
-@app.route('/', methods=['GET', 'POST'])
 @app.route('/login', methods=['POST'])
 def login():
     error = None
     if request.method == 'POST':
-        data = request.json  # Access the JSON data
+        data = request.json
         email = data.get('email')
         password = data.get('password')
-        
+
         conn = sqlite3.connect('database3.db')
         cursor = conn.cursor()
-        cursor.execute('SELECT * FROM users WHERE email = ?', (email,))
-        user_data = cursor.fetchone()
-        conn.close()
-        
-        if user_data and bcrypt.checkpw(password.encode('utf-8'), user_data[4]):
-            user = User(user_data[0], user_data[1], user_data[2], user_data[3], user_data[4])
-            login_user(user)
-            # Return a response indicating a successful login
-            return {'success': True, 'redirect': '/'}  # Redirect to root route of frontend
-        error = 'Invalid email or password'
-    
+        try:
+            cursor.execute('SELECT * FROM users WHERE email = ?', (email,))
+            user_data = cursor.fetchone()
+            if user_data:
+                hashed_password = user_data[4]  # Assuming password is stored at index 4
+                if bcrypt.checkpw(password.encode('utf-8'), hashed_password):
+                    user = User(user_data[0], user_data[1], user_data[2], user_data[3], user_data[4])
+                    login_user(user)
+                    return {'success': True, 'redirect': '/'}
+                else:
+                    error = 'Incorrect password'
+            else:
+                error = 'User not found'
+        finally:
+            cursor.close()
+            conn.close()
+
     return {'success': False, 'error': error}
 
 @app.route('/register', methods=['POST'])
