@@ -6,7 +6,7 @@ const QuestionGeneration = () => {
     const [questions, setQuestions] = useState([]);
 
     const generateQuestions = async () => {
-<<<<<<< HEAD
+
         try {
             const response = await fetch('http://localhost:5000/generate-job-questions', {
                 method: 'POST',
@@ -28,17 +28,7 @@ const QuestionGeneration = () => {
             setQuestions([]); // Clear questions if there's an error
             // Display an error message to the user
         }
-=======
-        const response = await fetch('http://localhost:5000/generate-job-questions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ job_description: jobDescription }),
-        });
-        const data = await response.json();
-        setQuestions(data.questions);
->>>>>>> origin/main
+
     };
 
     return (
