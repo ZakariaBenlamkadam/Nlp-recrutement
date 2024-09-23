@@ -6,7 +6,7 @@ const QuestionGeneration = () => {
     const [questions, setQuestions] = useState([]);
 
     const generateQuestions = async () => {
-        const response = await fetch('/generate-job-questions', {
+        const response = await fetch('http://localhost:5000/generate-job-questions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
