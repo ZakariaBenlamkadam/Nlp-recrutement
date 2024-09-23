@@ -38,7 +38,7 @@ export default function Main() {
     formData.append('job_description', jobDescription);
 
     try {
-      const response = await fetch('/upload', {
+      const response = await fetch('http://localhost:5000/upload', {
         method: 'POST',
         body: formData,
       });
@@ -60,7 +60,7 @@ export default function Main() {
   const handleGenerateQuestions = async (resumeText) => {
     setSelectedResume(resumeText);
     try {
-      const response = await fetch('/generate-questions', {
+      const response = await fetch('http://localhost:5000/generate-questions', {
         method: 'POST',
         body: JSON.stringify({ results: [{ cv_text: resumeText }] }),
         headers: {
