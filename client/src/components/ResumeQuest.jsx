@@ -9,7 +9,7 @@ const ResumeQuest = () => {
 
   const handleGenerateQuestions = async () => {
     try {
-      const response = await fetch('/generate-question', {
+      const response = await fetch('http://localhost:5000/register/generate-question', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
