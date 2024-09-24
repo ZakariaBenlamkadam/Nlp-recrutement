@@ -56,18 +56,51 @@
   }
   
   .sidebar-link {
+    font-size: 1rem;
     display: block;
     padding: 10px;
     color: #f0f0f0;
     text-decoration: none;
+    width: 140px;
   }
-  
+  .footer-link, .sidebar-link {
+    display: flex;
+    align-items: center;
+}
+
+.footer-link svg, .sidebar-link svg {
+    margin-right: 8px;
+}
+
   .sidebar-link:hover {
-    background-color: #fdc903;
+    background-color: #ce9f07;
+    font-weight: bold;
     border-radius: 5px;
     color: #001f3f;
   }
   
+.icon1 {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  margin-right: 10px;
+  background-size: cover; /* Ensure the image covers the div */
+}
+
+.home-icon {
+  background-image: url('home copy.png'); /* Default image */
+  width: 16px; /* Set appropriate width */
+  height: 16px; /* Set appropriate height */
+  margin-bottom: 3px;
+}
+
+.sidebar-link:hover .home-icon {
+  background-image: url('home.png'); /* Hover image */
+}
+
+
+
+
   .collapsible {
     margin-bottom: 20px;
   }
@@ -298,7 +331,7 @@
   .footer {
     color: white;
     margin-left: 0;
-    padding: 20px;
+    padding: 10px;
     transition: margin-left 0.3s ease;
     justify-content: space-between;
     align-items: center;

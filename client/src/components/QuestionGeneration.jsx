@@ -6,7 +6,7 @@ const QuestionGeneration = () => {
     const [questions, setQuestions] = useState([]);
 
     const generateQuestions = async () => {
-<<<<<<< HEAD
+
         try {
             const response = await fetch('http://localhost:5000/generate-job-questions', {
                 method: 'POST',
@@ -24,21 +24,10 @@ const QuestionGeneration = () => {
             setQuestions(data.questions);
         } catch (error) {
             console.error('Error fetching questions:', error);
-            // You can handle the error here, for example:
-            setQuestions([]); // Clear questions if there's an error
-            // Display an error message to the user
+            setQuestions([]); 
         }
-=======
-        const response = await fetch('http://localhost:5000/generate-job-questions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ job_description: jobDescription }),
-        });
-        const data = await response.json();
-        setQuestions(data.questions);
->>>>>>> origin/main
+
+        
     };
 
     return (

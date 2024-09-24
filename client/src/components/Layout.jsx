@@ -45,32 +45,39 @@ function Layout() {
                 </div>
                 <nav className="sidebar-nav">
                     <div className="collapsible">
-                            <Link to="/" className="sidebar-link">Home</Link>
-                        
+                        <Link to="/" className="sidebar-link">
+                        <div className="icon1 home-icon"></div> Home
+                        </Link>
                     </div>
                     {isAuthenticated && (
                         <>
-                            <Link to="/resume-match" className="sidebar-link">ResumeMatch</Link>
-                            <Link to="/quest-ai" className="sidebar-link">QuestAi</Link>
-                            <Link to="/resume-quest" className="sidebar-link">ResumeQuest</Link>
+                            <Link to="/resume-match" className="sidebar-link">
+                                <img src="/assets/logo.png" alt="Resume Match" className="icon1" /> ResumeMatch
+                            </Link>
+                            <Link to="/quest-ai" className="sidebar-link">
+                                <img src="/assets/logo.png" alt="Quest AI" className="icon" /> QuestAi
+                            </Link>
+                            <Link to="/resume-quest" className="sidebar-link">
+                                <img src="/assets/logo.png" alt="Resume Quest" className="icon" /> ResumeQuest
+                            </Link>
                         </>
                     )}
-                    <a href="#" className="sidebar-link">Settings</a>
+                    <Link to="/settings" className="sidebar-link">
+                        <img src="/assets/settings.png" alt="Settings" className="icon" /> Settings
+                    </Link>
                 </nav>
                 {isAuthenticated && (
                     <div className="sidebar-footer">
                         <button onClick={handleLogout} className="button-secondary1">Logout</button>
                     </div>
-                    )}
-                    
+                )}
                 {!isAuthenticated && (
                     <div className="sidebar-footer">
                         <button className="button-secondary1">
                             <Link to="/sign-in" className="no-link-style">Sign In</Link>
                         </button>
                     </div>
-                    )}
-                
+                )}
             </div>
 
             {/* Main Content */}
@@ -81,12 +88,10 @@ function Layout() {
                     </a>
 
                     <nav className="header-nav">
-                        <a href="#" className="header-link">Home</a>
-                        <a href="#" className="header-link">Features</a>
-                        <a href="#" className="header-link">Pricing</a>
-                        <a href="#" className="header-link">Contact</a>
-
-                        
+                        <Link to="/" className="header-link">Home</Link>
+                        <Link to="/" className="header-link">Features</Link>
+                        <Link to="/" className="header-link">Pricing</Link>
+                        <Link to="/" className="header-link">Contact</Link>
                         <Link to="/sign-in" className="header-signin">Get Started</Link>
                     </nav>
 
@@ -99,14 +104,13 @@ function Layout() {
                 </header>
 
                 <main>
-                    <Outlet /> 
+                    <Outlet />
                 </main>
             </div>
+
             <footer className={`footer ${isSidebarOpen ? 'shifted' : ''}`}>
                 <div className="footer-content">
-                    <a href="#" className="footer-link">Privacy Policy</a>
-                    <a href="#" className="footer-link">Terms of Service</a>
-                    <a href="#" className="footer-link">Contact Us</a>
+                    <p>© 2024 TalentQuest All rights reserved.</p>
                 </div>
             </footer>
         </div>
