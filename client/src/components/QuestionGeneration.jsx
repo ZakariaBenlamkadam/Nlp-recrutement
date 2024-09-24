@@ -7,6 +7,7 @@ const QuestionGeneration = () => {
 
     const generateQuestions = async () => {
 
+
         try {
             const response = await fetch('http://localhost:5000/generate-job-questions', {
                 method: 'POST',
@@ -27,7 +28,7 @@ const QuestionGeneration = () => {
             setQuestions([]); 
         }
 
-        
+
     };
 
     return (
