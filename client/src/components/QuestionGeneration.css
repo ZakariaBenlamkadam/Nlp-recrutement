@@ -63,7 +63,7 @@
 }
 
 .questiongeneration-generate-button:hover {
-    background-color: #005bb5; /* Darker shade for hover */
+    background-color: #001f3f !important;
 }
 
 /* Questions Section */

@@ -51,20 +51,20 @@ function Layout() {
                     </div>
                     {isAuthenticated && (
                         <>
-                            <Link to="/resume-match" className="sidebar-link">
-                                <img src="/assets/logo.png" alt="Resume Match" className="icon1" /> ResumeMatch
-                            </Link>
-                            <Link to="/quest-ai" className="sidebar-link">
-                                <img src="/assets/logo.png" alt="Quest AI" className="icon" /> QuestAi
-                            </Link>
-                            <Link to="/resume-quest" className="sidebar-link">
-                                <img src="/assets/logo.png" alt="Resume Quest" className="icon" /> ResumeQuest
-                            </Link>
+                        <Link to="/resume-match" className="sidebar-link1">
+                        <div className="icon1 match-icon"></div>ResumeMatch
+                        </Link>
+                        <Link to="/quest-ai" className="sidebar-link1">
+                        <div className="icon1 job-icon"></div>QuestAi
+                        </Link>
+                        <Link to="/resume-quest" className="sidebar-link">
+                        <div className="icon1 question-icon"></div> ResumeQuest
+                        </Link>
                         </>
                     )}
-                    <Link to="/settings" className="sidebar-link">
-                        <img src="/assets/settings.png" alt="Settings" className="icon" /> Settings
-                    </Link>
+                    <Link to="/" className="sidebar-link">
+                        <div className="icon1 settings-icon"></div> Settings
+                        </Link>
                 </nav>
                 {isAuthenticated && (
                     <div className="sidebar-footer">
