@@ -1,0 +1,165 @@
+/* General layout */
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f4f7f9;
+}
+
+.header2 {
+    background-color: white;
+    padding: 1.5rem;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header2 h1 {
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+.menu-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.content {
+    display: flex;
+    flex: 1;
+    justify-content: center; /* Center the main section horizontally */
+}
+
+/* Main content */
+.main {
+    flex: 1;
+    max-width: 750px; /* Limit the width */
+    padding: 2rem;
+    margin-left: 0; /* Remove left margin for centering */
+}
+
+.tabs {
+    max-width: 750px;
+    width: 100%; /* Make the tabs take full width */
+}
+
+.tabs-list {
+    display: flex;
+    justify-content: space-around; /* Distribute space evenly among tabs */
+    margin: 0; /* Remove negative margins */
+    margin-bottom: 1.5rem;
+}
+
+.tabs-list button {
+    flex: 1; /* Allow buttons to grow equally */
+    padding: 0.75rem;
+    margin: 0 10px; /* Margin on the left and right */
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.tabs-list button:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.tabs-list button.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.tabs-content {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Card styling */
+.card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    margin-bottom: 1rem;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.card-icon {
+    margin-right: 0.75rem;
+    color: #007bff;
+    font-size: 1.25rem;
+}
+
+.card-description {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.card-content ol {
+    list-style: none;
+    padding: 0;
+}
+
+.card-content ol li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.card-content ol li .chevron {
+    margin-right: 0.75rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .main {
+        margin-left: 0; /* No left margin for smaller screens */
+    }
+
+    .tabs {
+        padding: 1rem;
+    }
+
+    .tabs-list {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .sidebar {
+        position: absolute;
+        transform: translateX(-100%);
+        z-index: 1000;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+}

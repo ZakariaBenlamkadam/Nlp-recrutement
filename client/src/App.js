@@ -10,6 +10,7 @@ import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import PrivateRoute from './components/PrivateRoute'; // Import the PrivateRoute component
 import Pricing from './components/Pricing';
+import Documentation from './components/Documentation';
 
 function App() {
   // Step 1: Retrieve authentication state from localStorage
@@ -30,6 +31,8 @@ function App() {
           <Route index element={<LandingPage />} />
 
           <Route path="/pricing" element={<Pricing/>} />
+          <Route path="/doc" element={<Documentation/>} />
+
           
           {/* Protected routes that require authentication */}
           <Route path="resume-match" element={<PrivateRoute element={<Main />} />} />
