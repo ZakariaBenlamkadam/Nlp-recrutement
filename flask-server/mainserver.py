@@ -496,9 +496,15 @@ def generate_feedback():
     data = request.json
     question_text = data.get('question_text', '')
     user_answer = data.get('user_answer', '')
-    feedback, indicator = generate_feedback_from_llm(question_text, user_answer)
-    return jsonify({"feedback": feedback, "indicator": indicator})
 
+    try:
+        feedback, indicator = generate_feedback_from_llm(question_text, user_answer)
+        return jsonify({"feedback": feedback, "indicator": indicator})
+    except Exception as e:
+        print(f"Error generating feedback: {e}")
+        return jsonify({"error": "Error generating feedback. Please try again."}), 500
+    
+    
 @app.route('/login', methods=['POST'])
 def login():
     error = None
