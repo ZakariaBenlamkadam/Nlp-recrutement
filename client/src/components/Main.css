@@ -8,6 +8,28 @@
   
 }
 
+.loading-container {
+  position: absolute; /* Change to absolute to keep it within the main component */
+  top: 0;
+  left: 0;
+  width: 100%; /* Set to 100% of the main component's width */
+  height: 100%; /* Set to 100% of the main component's height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #9095f7;
+  z-index: 999; 
+  opacity: 0.9;
+}
+
+.loading-video {
+  width: 40%;
+  height: auto; /* Adjust size based on the container */
+  object-fit: cover;
+  z-index: 1;
+}
+
+
 /* Form Container */
 .form-container1 {
   max-width: 500px;

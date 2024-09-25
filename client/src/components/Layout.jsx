@@ -37,7 +37,7 @@ function Layout() {
     return (
         <div className="app-container">
             {/* Sidebar */}
-            <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+            <div className={`sidebar ${isSidebarOpen ? 'open' : 'closed'}`}>
                 <div className="sidebar-header" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
                     <a href="#" className="sidebar-logo">
                         <span className="sidebar-title">TalentQuest</span>
@@ -46,25 +46,31 @@ function Layout() {
                 <nav className="sidebar-nav">
                     <div className="collapsible">
                         <Link to="/" className="sidebar-link">
-                        <div className="icon1 home-icon"></div> Home
+                  
+                            <div className="icon1 home-icon"></div> 
+                            {isSidebarOpen && <span>Home</span>}
                         </Link>
                     </div>
                     {isAuthenticated && (
                         <>
                         <Link to="/resume-match" className="sidebar-link1">
-                        <div className="icon1 match-icon"></div>ResumeMatch
+                            <div className="icon1 match-icon"></div>
+                            {isSidebarOpen && <span>ResumeMatch</span>}
                         </Link>
                         <Link to="/quest-ai" className="sidebar-link1">
-                        <div className="icon1 job-icon"></div>QuestAi
+                            <div className="icon1 job-icon"></div>
+                            {isSidebarOpen && <span>QuestAi</span>}
                         </Link>
                         <Link to="/resume-quest" className="sidebar-link">
-                        <div className="icon1 question-icon"></div> ResumeQuest
+                            <div className="icon1 question-icon"></div>
+                            {isSidebarOpen && <span>ResumeQuest</span>}
                         </Link>
                         </>
                     )}
                     <Link to="/" className="sidebar-link">
-                        <div className="icon1 settings-icon"></div> Settings
-                        </Link>
+                        <div className="icon1 settings-icon"></div> 
+                        {isSidebarOpen && <span>Settings</span>}
+                    </Link>
                 </nav>
                 {isAuthenticated && (
                     <div className="sidebar-footer">

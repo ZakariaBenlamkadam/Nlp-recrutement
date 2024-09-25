@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
-import { FileUpload } from 'primereact/fileupload'; 
-import { Toast } from 'primereact/toast'; 
-import 'primereact/resources/themes/saga-blue/theme.css'; 
-import 'primereact/resources/primereact.min.css'; 
-import 'primeicons/primeicons.css'; 
+import { FileUpload } from 'primereact/fileupload';
+import { Toast } from 'primereact/toast';
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 import './Main.css';
 
 export default function Main() {
@@ -14,10 +14,11 @@ export default function Main() {
   const [questions, setQuestions] = useState([]);
   const [selectedResume, setSelectedResume] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [feedback, setFeedback] = useState({}); 
-  const [userAnswers, setUserAnswers] = useState({}); 
-  const [feedbackMessage, setFeedbackMessage] = useState({}); 
-  const [resultsLoaded, setResultsLoaded] = useState(false); // New state variable
+  const [feedback, setFeedback] = useState({});
+  const [userAnswers, setUserAnswers] = useState({});
+  const [feedbackMessage, setFeedbackMessage] = useState({});
+  const [resultsLoaded, setResultsLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // New state variable
 
   const toast = useRef(null);
 
@@ -32,6 +33,8 @@ export default function Main() {
       setError('Please upload a resume and enter a job description');
       return;
     }
+
+    setIsLoading(true); // Start loading animation
 
     const formData = new FormData();
     formData.append('resumes', resumeFile);
@@ -49,11 +52,13 @@ export default function Main() {
 
       const data = await response.json();
       setResults(data);
-      setResultsLoaded(true); // Set resultsLoaded to true
+      setResultsLoaded(true);
+      setIsLoading(false); // Stop loading animation
       setError('');
     } catch (error) {
       console.error('There was a problem with the fetch operation:', error);
       setError('There was an error processing your request. Please try again.');
+      setIsLoading(false); // Stop loading animation
     }
   };
 
@@ -73,14 +78,12 @@ export default function Main() {
       }
 
       const questionsData = await response.json();
-      setQuestions(questionsData); // Set questions AFTER fetching the data
-      setShowModal(true); 
+      setQuestions(questionsData);
+      setShowModal(true);
     } catch (error) {
       console.error('There was a problem with the fetch operation:', error);
     }
   };
-
-
   const handleGenerateFeedback = async (question) => {
     if (!userAnswers[question.text]) return; // Check if an answer exists
 
@@ -121,17 +124,19 @@ export default function Main() {
     }
   };
 
+
+
   const closeModal = () => {
     setShowModal(false);
     setQuestions([]);
-    setFeedback({}); 
-    setFeedbackMessage({}); 
+    setFeedback({});
+    setFeedbackMessage({});
   };
 
   return (
     <div>
       <main>
-        <div className={`form-container1 ${resultsLoaded ? 'results-loaded' : ''}`}> {/* Conditional class */}
+        <div className={`form-container1 ${resultsLoaded ? 'results-loaded' : ''}`}>
           <h1 className="main-title">Find the Perfect Candidate</h1>
           <form className="form" onSubmit={handleSubmit}>
             <div className="form-group">
@@ -143,8 +148,8 @@ export default function Main() {
                 accept=".csv"
                 maxFileSize={1000000}
                 onUpload={onUpload}
-                onSelect={(e) => setResumeFile(e.files[0])}  
-                className="custom-fileupload" 
+                onSelect={(e) => setResumeFile(e.files[0])}
+                className="custom-fileupload"
               />
             </div>
             <div className="form-group1">
@@ -162,6 +167,18 @@ export default function Main() {
             {error && <div className="error-message">{error}</div>}
           </form>
         </div>
+
+        {/* Loading animation */}
+        {isLoading && (
+          <div className="loading-container">
+          <video autoPlay loop muted className="loading-video">
+            <source src="video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+
+          </div>
+        )}
+
         <div className="results-container">
           <div className="cards">
             {results.map((result, index) => (
@@ -186,13 +203,14 @@ export default function Main() {
             ))}
           </div>
         </div>
+
         {showModal && (
           <div className="modal-overlay" onClick={closeModal}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
               <h2 className="modal-title">Generated Questions</h2>
               <button className="close-modal-button" onClick={closeModal}>x</button>
               <div className="questions">
-                {questions.length > 0 && questions.map((question, index) => (
+                {questions.map((question, index) => (
                   <div className="question-card" key={index}>
                     <div className="question-text">{question.text}</div>
                     <div className="question-difficulty">{question.difficulty}</div>
@@ -224,6 +242,7 @@ export default function Main() {
                       </div>
                     )}
                   </div>
+                  
                 ))}
               </div>
             </div>
