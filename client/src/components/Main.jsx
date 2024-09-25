@@ -18,7 +18,8 @@ export default function Main() {
   const [userAnswers, setUserAnswers] = useState({});
   const [feedbackMessage, setFeedbackMessage] = useState({});
   const [resultsLoaded, setResultsLoaded] = useState(false);
-  const [isLoading, setIsLoading] = useState(false); // New state variable
+  const [isLoading, setIsLoading] = useState(false); 
+  const [isLoadingQuestions, setIsLoadingQuestions] = useState(false); 
 
   const toast = useRef(null);
 
@@ -53,17 +54,18 @@ export default function Main() {
       const data = await response.json();
       setResults(data);
       setResultsLoaded(true);
-      setIsLoading(false); // Stop loading animation
+      setIsLoading(false); 
       setError('');
     } catch (error) {
       console.error('There was a problem with the fetch operation:', error);
       setError('There was an error processing your request. Please try again.');
-      setIsLoading(false); // Stop loading animation
+      setIsLoading(false); 
     }
   };
 
   const handleGenerateQuestions = async (resumeText) => {
     setSelectedResume(resumeText);
+    setIsLoadingQuestions(true);
     try {
       const response = await fetch('http://localhost:5000/generate-questions', {
         method: 'POST',
@@ -80,8 +82,10 @@ export default function Main() {
       const questionsData = await response.json();
       setQuestions(questionsData);
       setShowModal(true);
+      setIsLoadingQuestions(false);
     } catch (error) {
       console.error('There was a problem with the fetch operation:', error);
+      setIsLoadingQuestions(false);
     }
   };
   const handleGenerateFeedback = async (question) => {
@@ -203,6 +207,14 @@ export default function Main() {
             ))}
           </div>
         </div>
+        {isLoadingQuestions && (
+          <div className="loading-container">
+            <video autoPlay loop muted className="loading-video">
+              <source src="video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        )}
 
         {showModal && (
           <div className="modal-overlay" onClick={closeModal}>
