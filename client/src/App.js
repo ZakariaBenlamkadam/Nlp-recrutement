@@ -9,6 +9,7 @@ import ResumeQuest from './components/ResumeQuest'; // Import the new component
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import PrivateRoute from './components/PrivateRoute'; // Import the PrivateRoute component
+import Pricing from './components/Pricing';
 
 function App() {
   // Step 1: Retrieve authentication state from localStorage
@@ -27,6 +28,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<LandingPage />} />
+
+          <Route path="/pricing" element={<Pricing/>} />
           
           {/* Protected routes that require authentication */}
           <Route path="resume-match" element={<PrivateRoute element={<Main />} />} />

@@ -10,6 +10,14 @@
 .footer{
   background-color: #001f3f;
 }
+
+.sidebar-link.active, .sidebar-link1.active {
+  background-color: #ce9f07;
+  font-weight: bold;
+  border-radius: 5px;
+  color: #001f3f;
+}
+
   
   /* Sidebar */
   .sidebar {
@@ -80,13 +88,13 @@
   }
   .sidebar-link1 {
     display: flex;
-    align-items: center; /* Align icon and text vertically in the middle */
+    align-items: center; 
     font-size: 1rem;
     padding: 10px;
     color: #f0f0f0;
     text-decoration: none;
     width: 140px;
-    gap: 0px; /* Add space between the icon and the text */
+    gap: 0px; 
     width: 155px;
 
   }
@@ -110,39 +118,48 @@
   height: 15px;
   display: inline-block;
   margin-right: 10px;
-  background-size: cover; /* Ensure the image covers the div */
+  background-size: cover; 
 }
-
 .home-icon {
-  background-image: url('./assets/home\ copy.png'); /* Default image */
-  width: 16px; /* Set appropriate width */
-  height: 16px; /* Set appropriate height */
+  background-image: url('./assets/home\ copy.png'); 
+  width: 16px; 
+  height: 16px; 
   margin-bottom: 3px;
 }
 
 .sidebar-link:hover .home-icon {
-  background-image: url('./assets/home.png'); /* Hover image */
+  background-image: url('./assets/home.png'); 
+}
+.sidebar-link.active .home-icon {
+  background-image: url('./assets/home.png'); 
 }
 
 .settings-icon {
-  background-image: url('./assets/setting\ copy.png'); /* Default image */
-  width: 16px; /* Set appropriate width */
-  height: 16px; /* Set appropriate height */
+  background-image: url('./assets/setting\ copy.png'); 
+  width: 16px; 
+  height: 16px; 
   margin-bottom: 3px;
 }
 
 .sidebar-link:hover .settings-icon {
-  background-image: url('./assets/setting.png'); /* Hover image */
+  background-image: url('./assets/setting.png'); 
 }
+.sidebar-link.active .settings-icon {
+  background-image: url('./assets/setting.png'); 
+}
+
 .match-icon {
-  background-image: url('./assets/puzzle.png'); /* Default image */
-  width: 16px; /* Set appropriate width */
-  height: 16px; /* Set appropriate height */
+  background-image: url('./assets/puzzle.png'); 
+  width: 16px; 
+  height: 16px; 
   margin-bottom: 3px;
 }
 
 .sidebar-link1:hover .match-icon {
-  background-image: url('./assets/puzzle\ copy.png'); /* Hover image */
+  background-image: url('./assets/puzzle\ copy.png'); 
+}
+.sidebar-link1.active .match-icon {
+  background-image: url('./assets/puzzle\ copy.png'); 
 }
 
 .job-icon {
@@ -155,6 +172,10 @@
 .sidebar-link1:hover .job-icon {
   background-image: url('./assets/job.png'); 
 }
+.sidebar-link1.active .job-icon {
+  background-image: url('./assets/job.png'); 
+}
+
 
 .question-icon {
   background-image: url('./assets/question-sign\ copy.png'); 
@@ -167,7 +188,9 @@
   background-image: url('./assets/question-sign.png'); 
 }
 
-
+.sidebar-link.active .question-icon{
+  background-image: url('./assets/question-sign.png'); 
+}
 
   .collapsible {
     margin-bottom: 20px;
