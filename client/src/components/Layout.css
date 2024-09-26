@@ -530,4 +530,39 @@
       margin-left: 0px;
     }
   }
+
+
+  /* Hide the documentation, pricing, and contact links in the header when screen width is less than 700px */
+@media (max-width: 700px) {
+  .header-nav .header-link:nth-child(2),
+  .header-nav .header-link:nth-child(3),
+  .header-nav .header-link:nth-child(4) {
+    display: none;
+  }
+
+  /* Sidebar Sub-links */
+  .home-sub-links {
+    display: none;
+    flex-direction: column;
+    padding-left: 20px;
+  }
+
+  .home-link-wrapper:hover .home-sub-links {
+    display: flex;
+  }
+
+  .sidebar-sub-link {
+    font-size: 0.9rem;
+    color: #f0f0f0;
+    text-decoration: none;
+    padding: 5px 0;
+  }
+
+  .sidebar-sub-link:hover {
+    color: #001f3f;
+    background-color: #ce9f07;
+    border-radius: 5px;
+  }
+}
+
   

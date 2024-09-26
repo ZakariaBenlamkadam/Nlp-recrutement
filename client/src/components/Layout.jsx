@@ -46,10 +46,17 @@ function Layout() {
                 </div>
                 <nav className="sidebar-nav">
                     <div className="collapsible">
+                        <div className="home-link-wrapper">
                         <Link to="/" className={`sidebar-link ${location.pathname === '/' ? 'active' : ''}`}>
                             <div className="icon1 home-icon"></div> 
                             {isSidebarOpen && <span>Home</span>}
                         </Link>
+                        <div className="home-sub-links">
+                            <Link to="/doc" className="sidebar-sub-link">Documentation</Link>
+                            <Link to="/pricing" className="sidebar-sub-link">Pricing</Link>
+                            <Link to="/contact" className="sidebar-sub-link">Contact</Link>
+                        </div>
+                        </div>
                     </div>
                     {isAuthenticated && (
                         <>
