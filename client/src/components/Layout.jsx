@@ -1,13 +1,16 @@
 import React from 'react';
 import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
+import useWindowWidth from './useWindowWidth'; // Adjust the path as needed
 import './Layout.css';
 
 function Layout() {
     const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = React.useState(false); // For Home link dropdown
     const [isButtonVisible, setIsButtonVisible] = React.useState(true);
     const navigate = useNavigate();
-    const location = useLocation();  // Get current location
+    const location = useLocation();
+    const windowWidth = useWindowWidth();  // Get window width
 
     // Retrieve authentication status from localStorage
     const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
@@ -35,6 +38,11 @@ function Layout() {
         navigate('/sign-in');
     };
 
+    // Function to toggle dropdown on click in mobile
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
+
     return (
         <div className="app-container">
             {/* Sidebar */}
@@ -46,36 +54,42 @@ function Layout() {
                 </div>
                 <nav className="sidebar-nav">
                     <div className="collapsible">
-                        <div className="home-link-wrapper">
-                        <Link to="/" className={`sidebar-link ${location.pathname === '/' ? 'active' : ''}`}>
-                            <div className="icon1 home-icon"></div> 
+                        <div
+                            className={`sidebar-link ${location.pathname === '/' ? 'active' : ''}`}
+                            onClick={windowWidth < 700 ? toggleDropdown : undefined} // Toggle dropdown on click if on mobile
+                            onMouseEnter={windowWidth >= 700 ? () => setIsDropdownOpen(true) : undefined}
+                            onMouseLeave={windowWidth >= 700 ? () => setIsDropdownOpen(false) : undefined}
+                        >
+                            <div className="icon1 home-icon"></div>
                             {isSidebarOpen && <span>Home</span>}
-                        </Link>
-                        <div className="home-sub-links">
-                            <Link to="/doc" className="sidebar-sub-link">Documentation</Link>
-                            <Link to="/pricing" className="sidebar-sub-link">Pricing</Link>
-                            <Link to="/contact" className="sidebar-sub-link">Contact</Link>
-                        </div>
+                            {isDropdownOpen && (
+                                <div className="dropdown-content">
+                                    <Link to="/" className="sidebar-link">Home</Link>
+                                    <Link to="/doc" className="sidebar-link">Documentation</Link>
+                                    <Link to="/pricing" className="sidebar-link">Pricing</Link>
+                                    <Link to="/contact" className="sidebar-link">Contact</Link>
+                                </div>
+                            )}
                         </div>
                     </div>
                     {isAuthenticated && (
                         <>
-                        <Link to="/resume-match" className={`sidebar-link1 ${location.pathname === '/resume-match' ? 'active' : ''}`}>
-                            <div className="icon1 match-icon"></div>
-                            {isSidebarOpen && <span>ResumeMatch</span>}
-                        </Link>
-                        <Link to="/quest-ai" className={`sidebar-link1 ${location.pathname === '/quest-ai' ? 'active' : ''}`}>
-                            <div className="icon1 job-icon"></div>
-                            {isSidebarOpen && <span>QuestAi</span>}
-                        </Link>
-                        <Link to="/resume-quest" className={`sidebar-link ${location.pathname === '/resume-quest' ? 'active' : ''}`}>
-                            <div className="icon1 question-icon"></div>
-                            {isSidebarOpen && <span>ResumeQuest</span>}
-                        </Link>
+                            <Link to="/resume-match" className={`sidebar-link1 ${location.pathname === '/resume-match' ? 'active' : ''}`}>
+                                <div className="icon1 match-icon"></div>
+                                {isSidebarOpen && <span>ResumeMatch</span>}
+                            </Link>
+                            <Link to="/quest-ai" className={`sidebar-link1 ${location.pathname === '/quest-ai' ? 'active' : ''}`}>
+                                <div className="icon1 job-icon"></div>
+                                {isSidebarOpen && <span>QuestAi</span>}
+                            </Link>
+                            <Link to="/resume-quest" className={`sidebar-link ${location.pathname === '/resume-quest' ? 'active' : ''}`}>
+                                <div className="icon1 question-icon"></div>
+                                {isSidebarOpen && <span>ResumeQuest</span>}
+                            </Link>
                         </>
                     )}
-                    <Link to="/" className={`sidebar-link ${location.pathname === '/settings' ? 'active' : ''}`}>
-                        <div className="icon1 settings-icon"></div> 
+                    <Link to="/settings" className={`sidebar-link ${location.pathname === '/settings' ? 'active' : ''}`}>
+                        <div className="icon1 settings-icon"></div>
                         {isSidebarOpen && <span>Settings</span>}
                     </Link>
                 </nav>
@@ -100,11 +114,16 @@ function Layout() {
                         <Link to="/" className="header-title">TalentQuest</Link>
                     </a>
 
+                    {/* Header Links - Hidden on small screens */}
                     <nav className="header-nav">
-                        <Link to="/" className="header-link">Home</Link>
-                        <Link to="/doc" className="header-link">Documentation</Link>
-                        <Link to="/pricing" className="header-link">Pricing</Link>
-                        <Link to="/contact" className="header-link">Contact</Link>
+                        {windowWidth >= 700 && (
+                            <>
+                                <Link to="/" className="header-link">Home</Link>
+                                <Link to="/doc" className="header-link">Documentation</Link>
+                                <Link to="/pricing" className="header-link">Pricing</Link>
+                                <Link to="/contact" className="header-link">Contact</Link>
+                            </>
+                        )}
                         <Link to="/sign-in" className="header-signin">Get Started</Link>
                     </nav>
 

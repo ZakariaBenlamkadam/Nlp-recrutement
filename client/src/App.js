@@ -12,6 +12,7 @@ import PrivateRoute from './components/PrivateRoute'; // Import the PrivateRoute
 import Pricing from './components/Pricing';
 import Documentation from './components/Documentation';
 import Contact from './components/Contact';
+import SettingsPage from './components/SettingsPage';
 
 function App() {
   // Step 1: Retrieve authentication state from localStorage
@@ -34,6 +35,8 @@ function App() {
           <Route path="/pricing" element={<Pricing/>} />
           <Route path="/doc" element={<Documentation/>} />
           <Route path="/contact" element={<Contact/>} />
+          <Route path="/settings" element={<SettingsPage/>} />
+
 
 
           

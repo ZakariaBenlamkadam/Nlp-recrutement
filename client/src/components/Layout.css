@@ -461,6 +461,38 @@
   .chevron {
     transition: transform 0.3s ease;
   }
+
+  /* Add CSS for the dropdown */
+.dropdown-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #001f3f;
+  padding: 10px;
+  position: absolute;
+  top: 150px; 
+  left: 20px;
+  width: 200px;
+  z-index: 1001;
+}
+
+.dropdown-content .sidebar-link {
+  padding: 8px;
+  color: white;
+  text-decoration: none;
+}
+
+.dropdown-content .sidebar-link:hover {
+  background-color: #ce9f07;
+  color: #001f3f;
+}
+
+
+@media (max-width: 700px) {
+  .header-nav {
+      display: none;
+  }
+}
+
   
   /* Responsive Styles */
   @media (max-width: 768px) {
