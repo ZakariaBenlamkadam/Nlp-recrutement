@@ -11,6 +11,7 @@ import SignUp from './components/SignUp';
 import PrivateRoute from './components/PrivateRoute'; // Import the PrivateRoute component
 import Pricing from './components/Pricing';
 import Documentation from './components/Documentation';
+import Contact from './components/Contact';
 
 function App() {
   // Step 1: Retrieve authentication state from localStorage
@@ -32,6 +33,8 @@ function App() {
 
           <Route path="/pricing" element={<Pricing/>} />
           <Route path="/doc" element={<Documentation/>} />
+          <Route path="/contact" element={<Contact/>} />
+
 
           
           {/* Protected routes that require authentication */}

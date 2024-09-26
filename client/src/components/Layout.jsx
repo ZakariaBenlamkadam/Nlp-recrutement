@@ -97,7 +97,7 @@ function Layout() {
                         <Link to="/" className="header-link">Home</Link>
                         <Link to="/doc" className="header-link">Documentation</Link>
                         <Link to="/pricing" className="header-link">Pricing</Link>
-                        <Link to="/" className="header-link">Contact</Link>
+                        <Link to="/contact" className="header-link">Contact</Link>
                         <Link to="/sign-in" className="header-signin">Get Started</Link>
                     </nav>
 

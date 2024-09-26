@@ -111,3 +111,16 @@ text-align: center;
 .compare-table td:first-child {
 text-align: left;
 }
+
+/* Media Query for screens smaller than 700px */
+@media (max-width: 700px) {
+    .pricing-tiers {
+        flex-direction: column; /* Stack the cards vertically */
+        align-items: center; /* Center the cards */
+    }
+
+    .card {
+        width: 100%; /* Make each card take the full width */
+        max-width: 350px; /* Optional: Set a max-width so the cards don't stretch too much */
+    }
+}

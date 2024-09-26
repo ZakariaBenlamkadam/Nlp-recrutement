@@ -4,10 +4,12 @@
     flex-direction: column;
     min-height: 100vh;
     background-color: #f4f7f9;
+    border-radius: 10px;
+    margin-top: 10px;
+    opacity: 0.9;
 }
 
 .header2 {
-    background-color: white;
     padding: 1.5rem;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -30,33 +32,32 @@
 .content {
     display: flex;
     flex: 1;
-    justify-content: center; /* Center the main section horizontally */
+    justify-content: center; 
 }
 
 /* Main content */
 .main {
     flex: 1;
-    max-width: 750px; /* Limit the width */
-    padding: 2rem;
-    margin-left: 0; /* Remove left margin for centering */
+    width: 100%; 
+    margin-left: 0; 
+    margin-top: 0;
 }
 
-.tabs {
-    max-width: 750px;
-    width: 100%; /* Make the tabs take full width */
+.tabs {  
+    width: 100%; 
 }
 
 .tabs-list {
     display: flex;
-    justify-content: space-around; /* Distribute space evenly among tabs */
-    margin: 0; /* Remove negative margins */
+    justify-content: space-around; 
+    margin: 0; 
     margin-bottom: 1.5rem;
 }
 
 .tabs-list button {
-    flex: 1; /* Allow buttons to grow equally */
+    flex: 1; 
     padding: 0.75rem;
-    margin: 0 10px; /* Margin on the left and right */
+    margin: 0 10px; 
     background-color: #f0f0f0;
     border: 1px solid #ddd;
     cursor: pointer;
@@ -76,11 +77,10 @@
 }
 
 .tabs-content {
-    background-color: #fff;
-    border: 1px solid #ddd;
+    display: flex; /* Add this to make cards horizontal */
+    gap: 1rem; /* Optional: adds space between cards */
     padding: 1.5rem;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 /* Card styling */
@@ -89,6 +89,7 @@
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     padding: 1.5rem;
+    flex: 1;
     margin-bottom: 1.5rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
     transition: transform 0.2s ease;
