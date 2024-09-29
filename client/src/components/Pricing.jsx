@@ -2,16 +2,16 @@ import React from 'react';
 import './Pricing.css'
 
 const PricingTier = ({ name, price, features, isHighlighted = false, isEnterprise = false }) => (
-  <div className={`card ${isHighlighted ? 'highlighted' : ''}`}>
-    <div className="card-header">
-      <h3 className="card-title">{name}</h3>
-      <p className="card-description">
+  <div className={`card1 ${isHighlighted ? 'highlighted' : ''}`}>
+    <div className="card1-header">
+      <h3 className="card1-title">{name}</h3>
+      <p className="card1-description">
         {isEnterprise ? 'Custom pricing' : (
-          <span className="card-price">${price}<span className="per-month">/month</span></span>
+          <span className="card1-price">${price}<span className="per-month">/month</span></span>
         )}
       </p>
     </div>
-    <div className="card-content">
+    <div className="card1-content">
       <ul>
         {features.map((feature, index) => (
           <li key={index} className="feature">
@@ -20,7 +20,7 @@ const PricingTier = ({ name, price, features, isHighlighted = false, isEnterpris
         ))}
       </ul>
     </div>
-    <div className="card-footer">
+    <div className="card1-footer">
       <button className={`btn ${isHighlighted ? 'btn-primary' : 'btn-outline'}`}>
         {isEnterprise ? 'Contact Us' : 'Sign Up'}
       </button>

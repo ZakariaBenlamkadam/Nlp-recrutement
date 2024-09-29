@@ -58,8 +58,8 @@
     padding: 0.75rem;
     margin: 0 10px; 
     background-color: #f0f0f0;
-    border: 1px solid #ddd;
     cursor: pointer;
+    border: none;
     transition: background-color 0.3s, color 0.3s;
     font-size: 1rem;
     font-weight: 500;
@@ -76,14 +76,13 @@
 }
 
 .tabs-content {
-    display: flex; /* Add this to make cards horizontal */
-    gap: 1rem; /* Optional: adds space between cards */
+    display: flex; 
+    gap: 1rem; 
     padding: 1.5rem;
     border-radius: 8px;
 }
 
-/* Card styling */
-.card {
+.card1 {
     background-color: #fff;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
@@ -94,45 +93,45 @@
     transition: transform 0.2s ease;
 }
 
-.card:hover {
+.card1:hover {
     transform: translateY(-5px);
 }
 
-.card-header {
+.card1-header {
     margin-bottom: 1rem;
 }
 
-.card-title {
+.card1-title {
     font-size: 1.5rem;
     font-weight: bold;
     display: flex;
     align-items: center;
 }
 
-.card-icon {
+.card1-icon {
     margin-right: 0.75rem;
     color: #007bff;
     font-size: 1.25rem;
 }
 
-.card-description {
+.card1-description {
     color: #666;
     font-size: 0.95rem;
     margin-bottom: 1rem;
 }
 
-.card-content ol {
+.card1-content ol {
     list-style: none;
     padding: 0;
 }
 
-.card-content ol li {
+.card1-content ol li {
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
 }
 
-.card-content ol li .chevron {
+.card1-content ol li .chevron {
     margin-right: 0.75rem;
     font-weight: bold;
     color: #007bff;
@@ -141,7 +140,7 @@
 /* Responsive */
 @media (max-width: 1024px) {
     .main {
-        margin-left: 0; /* No left margin for smaller screens */
+        margin-left: 0; 
     }
 
     .tabs {
@@ -153,13 +152,4 @@
         gap: 0.5rem;
     }
 
-    .sidebar {
-        position: absolute;
-        transform: translateX(-100%);
-        z-index: 1000;
-    }
-
-    .sidebar.open {
-        transform: translateX(0);
-    }
 }

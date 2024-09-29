@@ -564,7 +564,7 @@
   }
 
 
-  /* Hide the documentation, pricing, and contact links in the header when screen width is less than 700px */
+
 @media (max-width: 700px) {
   .header-nav .header-link:nth-child(2),
   .header-nav .header-link:nth-child(3),
@@ -595,6 +595,6 @@
     background-color: #ce9f07;
     border-radius: 5px;
   }
+
 }
 
-  

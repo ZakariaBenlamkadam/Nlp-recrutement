@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import './Documentation.css';
 
 const InstructionCard = ({ title, description, steps, icon }) => (
-  <div className="card">
-    <div className="card-header">
-      <div className="card-title">
-        {icon && <span className="card-icon">{icon}</span>}
+  <div className="card1">
+    <div className="card1-header">
+      <div className="card1-title">
+        {icon && <span className="card1-icon">{icon}</span>}
         {title}
       </div>
-      <div className="card-description">{description}</div>
+      <div className="card1-description">{description}</div>
     </div>
-    <div className="card-content">
+    <div className="card1-content">
       <ol>
         {steps.map((step, index) => (
           <li key={index}>
@@ -69,8 +69,8 @@ export default function Documentation() {
                     "Navigate to the Job Description page.",
                     "Enter the job description in the text area.",
                     "Click the 'Generate Interview Questions' button.",
-                    "Review the generated questions.",
-                    "Use the 'Copy' or 'Download' buttons to save the questions."
+                    "Review the generated questions."
+                    
                   ]}
                 />
               )}

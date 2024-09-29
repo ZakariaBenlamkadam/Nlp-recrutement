@@ -19,19 +19,19 @@ export default function Contact() {
             <div className="contact-card">
               <h2>Send us a message</h2>
               <form className="contact-form">
-                <div className="form-group">
+                <div className="form-group1">
                   <label htmlFor="fullName">Full Name</label>
                   <input id="fullName" name="fullName" type="text" required />
                 </div>
-                <div className="form-group">
+                <div className="form-group1">
                   <label htmlFor="email">Email Address</label>
                   <input id="email" name="email" type="email" required />
                 </div>
-                <div className="form-group">
+                <div className="form-group1">
                   <label htmlFor="subject">Subject</label>
                   <input id="subject" name="subject" type="text" required />
                 </div>
-                <div className="form-group">
+                <div className="form-group1">
                   <label htmlFor="message">Message</label>
                   <textarea id="message" name="message" rows={4} required />
                 </div>
@@ -63,9 +63,9 @@ export default function Contact() {
         <div className="social-media">
           <h3>Connect with us</h3>
           <div className="social-icons">
-            <a href="#">Facebook</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">Twitter</a>
+            <a href="/">Facebook</a>
+            <a href="/">LinkedIn</a>
+            <a href="/">Twitter</a>
           </div>
         </div>
       </main>

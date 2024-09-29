@@ -141,14 +141,14 @@
   margin-bottom: 20px;
 }
 
-/* Cards */
-.cards {
+/* card11s */
+.card1s {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
 }
 
-.card {
+.card1 {
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -158,34 +158,34 @@
   gap: 12px;
 }
 
-/* Card Header */
-.card-header {
+/* card11 Header */
+.card1-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.card-title {
+.card1-title {
   font-size: 1rem;
   font-weight: bold;
   color: #333;
 }
 
-.card-percentage {
+.card1-percentage {
   font-size: 1rem;
   font-weight: bold;
   color: #001f3f; /* Primary color */
 }
 
-/* Card Progress Bar */
-.card-progress {
+/* card1 Progress Bar */
+.card1-progress {
   height: 6px;
   background-color: #f0f0f0;
   border-radius: 3px;
   overflow: hidden;
 }
 
-.card-progress-bar {
+.card1-progress-bar {
   height: 100%;
   background-color: #001f3f; /* Primary color */
   transition: width 0.5s ease-in-out;
@@ -279,8 +279,8 @@
   margin-top: 20px;
 }
 
-/* Question card styles */
-.question-card {
+/* Question card1 styles */
+.question-card1 {
   margin-bottom: 15px;
   padding: 15px;
   border: 1px solid #ddd;
