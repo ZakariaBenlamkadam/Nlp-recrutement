@@ -96,6 +96,10 @@ The application will be accessible at http://localhost:5000 (backend) and http:/
 
 
 ## Project Screenshot
+<div align="center">
 
-![Project Screenshot](screenshots/s1.png)
+  ![Project Screenshot](screenshots/s1.png)
+
+</div>
+
 
