@@ -20,7 +20,7 @@ TalentQuest is a web application built with Flask and React that empowers users 
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/TalentQuest.git
+   git clone[ https://github.com/ZakariaBenlamkadam/Nlp-recrutement]
 Use code with caution.
 Markdown
 Install Dependencies:
