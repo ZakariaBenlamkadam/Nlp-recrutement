@@ -183,17 +183,17 @@ export default function Main() {
           </div>
         )}
 
-        <div className="results-container">
-          <div className="card1s">
+        <div className="results-container1">
+          <div className="card3s">
             {results.map((result, index) => (
-              <div className="card1" key={index}>
-                <div className="card1-header">
-                  <div className="card1-title">CV {result.cv_id}</div>
-                  <div className="card1-percentage">{(result.similarity_cosine * 100).toFixed(2)}%</div>
+              <div className="card3" key={index}>
+                <div className="card3-header">
+                  <div className="card3-title">CV {result.cv_id}</div>
+                  <div className="card3-percentage">{(result.similarity_cosine * 100).toFixed(2)}%</div>
                 </div>
-                <div className="card1-progress">
+                <div className="card3-progress">
                   <div
-                    className="card1-progress-bar"
+                    className="card3-progress-bar"
                     style={{ width: `${(result.similarity_cosine * 100).toFixed(2)}%` }}
                   />
                 </div>
@@ -223,7 +223,7 @@ export default function Main() {
               <button className="close-modal-button" onClick={closeModal}>x</button>
               <div className="questions">
                 {questions.map((question, index) => (
-                  <div className="question-card1" key={index}>
+                  <div className="question-card3" key={index}>
                     <div className="question-text">{question.text}</div>
                     <div className="question-difficulty">{question.difficulty}</div>
                     <div className="question-category">{question.category}</div>

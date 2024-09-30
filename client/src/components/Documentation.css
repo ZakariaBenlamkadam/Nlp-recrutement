@@ -47,6 +47,9 @@
 }
 
 .tabs-list {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
     display: flex;
     justify-content: space-around; 
     margin: 0; 
@@ -63,16 +66,19 @@
     transition: background-color 0.3s, color 0.3s;
     font-size: 1rem;
     font-weight: 500;
+    
 }
 
 .tabs-list button:hover {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #001f3f;
+    color: #fdc903;
+    font-weight: bold;
 }
 
 .tabs-list button.active {
-    background-color: #007bff;
-    color: white;
+    background-color: #001f3f;
+    color: #fdc903;
+    font-weight: bold;
 }
 
 .tabs-content {
