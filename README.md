@@ -19,97 +19,79 @@ TalentQuest is a web application built with Flask and React that empowers users 
 ## Getting Started
 
 1. **Clone the Repository:**
-   ```bash
-   git clone[ https://github.com/ZakariaBenlamkadam/Nlp-recrutement]
-Use code with caution.
-Markdown
-Install Dependencies:
+   bash
+   git clone https://github.com/ZakariaBenlamkadam/Nlp-recrutement
 
-Backend (Flask):
 
-cd TalentQuest/backend
-pip install -r requirements.txt
-Use code with caution.
-Bash
-Frontend (React):
+2. **Install Dependencies:**
 
-cd TalentQuest/client
+### Backend (Flask):
+
+
+```bash
+  cd /flask-server
+  pip install -r requirements.txt
+````
+    
+
+### Frontend (React):
+```bash
+cd /client
 npm install
-Use code with caution.
-Bash
-Create Database:
+```
+### Create Database:
 
 Create a database3.db file in the backend directory.
 
 Run the following command to create the database tables:
-
-python backend/app.py
-Use code with caution.
-Bash
-Set API Key:
+```bash
+python app.py
+```
 
 Replace the placeholder groq_api_key in the backend/app.py file with your actual Groq API key.
 
-Run the Application:
+3.** Run the Application:**
 
-Backend:
-
-cd TalentQuest/backend
-flask run
-Use code with caution.
-Bash
-Frontend:
-
-cd TalentQuest/client
+### Backend:
+```bash
+cd /flask-server
+python mainserver.py
+```
+### Frontend:
+```bash
+cd /client
 npm start
-Use code with caution.
-Bash
+```
+
 The application will be accessible at http://localhost:5000 (backend) and http://localhost:3000 (frontend).
 
-Technologies Used
-Backend:
+4.**Technologies Used**
+### Backend:
 
-Flask (Python web framework)
+* **Flask (Python web framework)**
 
-LangChain Groq (Large Language Model integration)
+* **LangChain Groq (Large Language Model integration)**
 
-ChromaDB (Vector database)
+* **ChromaDB (Vector database)**
 
-SQLite3 (Database)
+* **SQLite3 (Database)**
 
-Flask-Login (User authentication)
+* **Flask-Login (User authentication)**
 
-Bcrypt (Password hashing)
+* **Bcrypt (Password hashing)**
 
-Frontend:
+### Frontend:
 
-React (JavaScript library)
+* **React (JavaScript library)**
 
-React Router Dom (Routing)
+* **React Router Dom (Routing)**
 
-MUI (Material-UI) (UI components)
+* **MUI (Material-UI) (UI components)**
 
-PrimeReact (UI components)
+* **PrimeReact (UI components)**
 
-React-Query (Data fetching)
+* **React-Query (Data fetching)**
 
-Axios (HTTP requests)
+* **Axios (HTTP requests)**
 
-Contributing
-Contributions are welcome! Please see the CONTRIBUTING.md file for details.
 
-License
-This project is licensed under the MIT License. See the LICENSE file for more information.
-
-**How to Use:**
-
-1. **Copy the Markdown Code:** Copy the complete markdown code from above.
-2. **Create a README.md File:** In your GitHub repository, create a new file named `README.md`.
-3. **Paste the Code:** Paste the copied markdown code into the `README.md` file.
-4. **Commit Changes:** Commit your changes to the repository.
-
-**Remember to:**
-
-- Replace `your-username` in the clone command with your actual GitHub username.
-- Include a link to your `CONTRIBUTING.md` file if you have one.
-- Adjust the license information if necessary.
