@@ -53,15 +53,16 @@ function Layout() {
                     </a>
                 </div>
                 <nav className="sidebar-nav">
-                    <div className="collapsible">
+                <div className="collapsible">
+                    {windowWidth < 700 ? (
                         <div
                             className={`sidebar-link ${location.pathname === '/' ? 'active' : ''}`}
-                            onClick={windowWidth < 700 ? toggleDropdown : undefined} // Toggle dropdown on click if on mobile
-                            onMouseEnter={windowWidth >= 700 ? () => setIsDropdownOpen(true) : undefined}
-                            onMouseLeave={windowWidth >= 700 ? () => setIsDropdownOpen(false) : undefined}
+                            onClick={toggleDropdown}  // Toggle dropdown only for small screens
                         >
                             <div className="icon1 home-icon"></div>
                             {isSidebarOpen && <span>Home</span>}
+
+                            {/* Dropdown for small screens */}
                             {isDropdownOpen && (
                                 <div className="dropdown-content">
                                     <Link to="/" className="sidebar-link">Home</Link>
@@ -71,7 +72,17 @@ function Layout() {
                                 </div>
                             )}
                         </div>
-                    </div>
+                    ) : (
+                        /* Direct Home link for larger screens */
+                        <Link to="/" className={`sidebar-link ${location.pathname === '/' ? 'active' : ''}`}>
+                            <div className="icon1 home-icon"></div>
+                            {isSidebarOpen && <span>Home</span>}
+                        </Link>
+                    )}
+                </div>
+
+
+                    
                     {isAuthenticated && (
                         <>
                             <Link to="/resume-match" className={`sidebar-link1 ${location.pathname === '/resume-match' ? 'active' : ''}`}>

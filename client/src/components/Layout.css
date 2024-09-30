@@ -70,15 +70,16 @@
     color: #f0f0f0;
     text-decoration: none;
     width: 155px;
+    cursor: pointer;
   }
   .footer-link, .sidebar-link {
     display: flex;
     align-items: center;
-}
+  }
 
-.footer-link svg, .sidebar-link svg {
-    margin-right: 8px;
-}
+  .footer-link svg, .sidebar-link svg {
+      margin-right: 8px;
+  }
 
   .sidebar-link:hover {
     background-color: #ce9f07;
@@ -596,5 +597,11 @@
     border-radius: 5px;
   }
 
+}
+/* Hide dropdown for screens wider than 700px */
+@media (min-width: 700px) {
+  .dropdown-content {
+    display: none; /* Hide dropdown content */
+  }
 }
 

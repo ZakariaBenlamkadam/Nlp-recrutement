@@ -11,12 +11,18 @@
 .header3 {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  display: flex; /* Add this line */
+  justify-content: center; /* Center the header content */
+  align-items: center; /* Vertically center the header content */
 }
 
 .header-content {
   display: flex;
   align-items: center;
+  justify-content: center; /* Center content within the header */
+  width: 100%; /* Ensures it takes full width */
 }
+
 
 h1 {
   font-size: 24px;
@@ -31,16 +37,39 @@ h1 {
 
 .contact-container {
   display: flex;
-  flex-direction: column;
-  gap: 40px;
+  flex-direction: column; /* Change to column for proper layout */
 }
 
+/* Contact form and image container */
+.contact-form-image-container {
+  display: flex; /* Keep them in a row */
+  justify-content: space-between; /* Space between form and image */
+  align-items: flex-start; /* Align items to the start */
+  margin-bottom: 20px; /* Space below the form/image */
+}
+
+/* Adjusting the form container */
 .contact-form-container {
-  flex: 1;
+  flex: 1; /* Takes half of the available space */
+  margin-right: 20px; /* Space between form and image */
+}
+
+/* Adjusting the image container */
+.contact-image-container {
+  flex: 1; /* Takes half of the available space */
+}
+
+.contact-image {
+  width: 100%; /* Make the image responsive */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Ensure contact info stays below the form and image */
+.contact-info {
+  margin-top: 20px; /* Add spacing between the form/image and the contact info */
 }
 
 .contact-card {
-  background-color: white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
@@ -70,7 +99,7 @@ h1 {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  text-align: left; /* Ensure text inside input fields is left-aligned */
+  text-align: left; 
 }
 
 .contact-form textarea {
@@ -89,11 +118,6 @@ h1 {
 
 .btn-submit:hover {
   background-color: #0056b3;
-}
-
-/* Contact information */
-.contact-info {
-  flex: 1;
 }
 
 .info-card {
@@ -125,4 +149,24 @@ h1 {
 
 .social-icons a:hover {
   text-decoration: underline;
+}
+
+
+/* Add this media query at the end of your existing CSS */
+@media (max-width: 768px) {
+  /* Change contact-container to column layout on smaller screens */
+  .contact-container {
+    flex-direction: column; /* Stack contact info below form/image */
+  }
+
+  .contact-form-image-container {
+    flex-direction: column; /* Stack form and image vertically on small screens */
+    align-items: center; /* Center align them */
+  }
+
+  .contact-form-container, 
+  .contact-image-container {
+    width: 100%; /* Full width for each component */
+    margin-right: 0; /* Remove right margin for vertical stacking */
+  }
 }

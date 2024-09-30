@@ -14,32 +14,41 @@ export default function Contact() {
       {/* Main Content */}
       <main className="main-content1">
         <div className="contact-container">
-          <div className="contact-form-container">
-            {/* Contact Form */}
-            <div className="contact-card">
-              <h2>Send us a message</h2>
-              <form className="contact-form">
-                <div className="form-group1">
-                  <label htmlFor="fullName">Full Name</label>
-                  <input id="fullName" name="fullName" type="text" required />
-                </div>
-                <div className="form-group1">
-                  <label htmlFor="email">Email Address</label>
-                  <input id="email" name="email" type="email" required />
-                </div>
-                <div className="form-group1">
-                  <label htmlFor="subject">Subject</label>
-                  <input id="subject" name="subject" type="text" required />
-                </div>
-                <div className="form-group1">
-                  <label htmlFor="message">Message</label>
-                  <textarea id="message" name="message" rows={4} required />
-                </div>
-                <div>
-                  <button type="submit" className="btn-submit">Send Message</button>
-                </div>
-              </form>
+          {/* Contact Form and Image Container */}
+          <div className="contact-form-image-container">
+          {/* Image Container */}
+          <div className="contact-image-container">
+              <img src="contact.png" alt="Contact Us" className="contact-image" />
             </div>
+            {/* Contact Form */}
+            <div className="contact-form-container">
+              <div className="contact-card">
+                <h2>Send us a message</h2>
+                <form className="contact-form">
+                  <div className="form-group1">
+                    <label htmlFor="fullName">Full Name</label>
+                    <input id="fullName" name="fullName" type="text" required />
+                  </div>
+                  <div className="form-group1">
+                    <label htmlFor="email">Email Address</label>
+                    <input id="email" name="email" type="email" required />
+                  </div>
+                  <div className="form-group1">
+                    <label htmlFor="subject">Subject</label>
+                    <input id="subject" name="subject" type="text" required />
+                  </div>
+                  <div className="form-group1">
+                    <label htmlFor="message">Message</label>
+                    <textarea id="message" name="message" rows={4} required />
+                  </div>
+                  <div>
+                    <button type="submit" className="btn-submit">Send Message</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            
           </div>
 
           {/* Location and Office Information */}
@@ -69,7 +78,6 @@ export default function Contact() {
           </div>
         </div>
       </main>
-
     </div>
   );
 }
