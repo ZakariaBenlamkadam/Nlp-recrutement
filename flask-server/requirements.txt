@@ -1,7 +1,7 @@
 flask
 langchain-groq
 chromadb
-sqlite3
+
 flask-login
 bcrypt
 pandas

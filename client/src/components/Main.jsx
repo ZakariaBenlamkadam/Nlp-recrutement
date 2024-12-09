@@ -42,7 +42,7 @@ export default function Main() {
     formData.append('job_description', jobDescription);
 
     try {
-      const response = await fetch('http://localhost:5000/upload', {
+      const response = await fetch('http://127.0.0.1:5000/upload', {
         method: 'POST',
         body: formData,
       });
@@ -67,7 +67,7 @@ export default function Main() {
     setSelectedResume(resumeText);
     setIsLoadingQuestions(true);
     try {
-      const response = await fetch('http://localhost:5000/generate-questions', {
+      const response = await fetch('http://127.0.0.1:5000/generate-questions', {
         method: 'POST',
         body: JSON.stringify({ results: [{ cv_text: resumeText }] }),
         headers: {
@@ -92,7 +92,7 @@ export default function Main() {
     if (!userAnswers[question.text]) return; // Check if an answer exists
 
     try {
-      const response = await fetch('http://localhost:5000/feedback', {
+      const response = await fetch('http://127.0.0.1:5000/feedback', {
         method: 'POST',
         body: JSON.stringify({ question_text: question.text, user_answer: userAnswers[question.text] }),
         headers: {
@@ -148,9 +148,9 @@ export default function Main() {
               <FileUpload
                 mode="basic"
                 name="demo[]"
-                url="/api/upload"
+                url="/upload"
                 accept=".csv"
-                maxFileSize={1000000}
+                maxFileSize={4000000}
                 onUpload={onUpload}
                 onSelect={(e) => setResumeFile(e.files[0])}
                 className="custom-fileupload"
