@@ -112,7 +112,8 @@ The application will be accessible at http://localhost:5000 (backend) and http:/
   ![Project Screenshot](screenshots/s1.png)
 
 </div>
-[![Watch the video](screenshots/s1.png)](https://www.youtube.com/watch?v=olse6d89LaY)
-
+<a href="https://www.youtube.com/watch?v=olse6d89LaY">
+  <img src="screenshots/s1.png" alt="Watch the video">
+</a>
 
 
