@@ -94,6 +94,13 @@ The application will be accessible at http://localhost:5000 (backend) and http:/
 
 * **Axios (HTTP requests)**
 
+## Project Architecture
+<div align="center">
+
+  ![Project Screenshot](screenshots/architecture.png)
+
+</div>
+
 
 ## Project Screenshot
 <div align="center">
