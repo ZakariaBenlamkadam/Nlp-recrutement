@@ -110,10 +110,19 @@ The application will be accessible at http://localhost:5000 (backend) and http:/
 
 
   ![Project Screenshot](screenshots/s1.png)
+  ![Project Screenshot](screenshots/s2.png)
+  ![Project Screenshot](screenshots/sign%20in.png)
+  ![Project Screenshot](screenshots/questai.png.png)
+  ![Project Screenshot](screenshots/resumematch.png.png)
+  ![Project Screenshot](screenshots/resumequest.png.png)
+  ![Project Screenshot](screenshots/settings%201.png)
+  ![Project Screenshot](screenshots/settings%202.png)
+  ![Project Screenshot](screenshots/pricing%201.png)
+  ![Project Screenshot](screenshots/pricing%202.png)
+  
+  
 
 </div>
-<a href="https://www.youtube.com/watch?v=olse6d89LaY">
-  <img src="screenshots/s1.png" alt="Watch the video">
-</a>
+
 
 
