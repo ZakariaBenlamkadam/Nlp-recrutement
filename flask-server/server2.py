@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 # Initialize the model outside of the endpoint to avoid reloading it on every request
 llm = "llama-3.1-70b-versatile"
-model = ChatGroq(model_name=llm, temperature=0, groq_api_key='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')
+model = ChatGroq(model_name=llm, temperature=0, groq_api_key='')
 
 def retry_request(func, *args, **kwargs):
     max_retries = 3
