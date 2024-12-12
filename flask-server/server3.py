@@ -4,14 +4,14 @@ from langchain_groq import ChatGroq
 from langchain_core.prompts import PromptTemplate
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app)  
 
 # Initialize the Groq model
 llm = "llama-3.1-70b-versatile"
 model = ChatGroq(
     model_name=llm,
     temperature=0,
-    groq_api_key='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'
+    groq_api_key=''
 )
 
 def extract_skills_from_resume2(resume_text):
@@ -64,7 +64,7 @@ def generate_questions_from_skill2(category, skill):
 def handle_generate_question():
     data = request.json
     resume_text = data.get('resume_text', '')
-    category = data.get('category', 'Data Science')  # Default to 'Data Science' if not provided
+    category = data.get('category', 'Data Science')  
 
     skills = extract_skills_from_resume2(resume_text)
     
