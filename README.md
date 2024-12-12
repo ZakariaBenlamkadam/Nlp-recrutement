@@ -112,7 +112,7 @@ The application will be accessible at http://localhost:5000 (backend) and http:/
   ![Project Screenshot](screenshots/s1.png)
   ![Project Screenshot](screenshots/s2.png)
   ![Project Screenshot](screenshots/sign%20in.png)
-  ![Project Screenshot](screenshots/questai.png.png)
+  ![Project Screenshot](screenshots/questai.png)
   ![Project Screenshot](screenshots/resumematch.png)
   ![Project Screenshot](screenshots/resumequest.png)
   ![Project Screenshot](screenshots/settings%201.png)
