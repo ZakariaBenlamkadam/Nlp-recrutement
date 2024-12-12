@@ -141,17 +141,17 @@ def calcul_cosine_similarity(chroma_client, resumes_collection_name, jobs_collec
     return df_with_scores
 
 
-# Initialize LangChain Groq model
+
 llm = "llama-3.1-70b-versatile"
 model = ChatGroq(
     model_name=llm,
     temperature=0,
-    groq_api_key='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'
+    groq_api_key=''
 )
 
 def retry_request(func, *args, **kwargs):
     max_retries = 3
-    delay = 1  # Start with a 1-second delay
+    delay = 1  
 
     for attempt in range(max_retries):
         try:
@@ -285,7 +285,7 @@ def generate_questions1():
         skills = extract_skills_from_resume(resume_text)
 
         all_questions = []
-        category = "Data Science"  # Adjust this if necessary
+        category = "Data Science"  
 
         for skill in skills:
             # Generate questions for each skill
