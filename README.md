@@ -7,10 +7,10 @@ TalentQuest is a web application built with Flask and React that empowers users 
 
 **For Candidates:**
 
-* ** 📄🤝 Resume Matching:** Analyze a candidate's resume against a given job description using  semantic similarity to determine the candidate's relevance.
-* ** ❓📋 AI-Powered Question Generation:** Generate interview questions tailored to a candidate's skills and experience, extracted from their resume. 
-* ** ✅🎯 Interview Question Feedback:** Get instant feedback on answers to practice questions, helping to improve communication and clarity.
-* ** 📜➡️ Resume-to-Question Generation:** Quickly generate interview questions based on a candidate's resume, for a personalized preparation experience.
+* **📄🤝 Resume Matching:** Analyze a candidate's resume against a given job description using  semantic similarity to determine the candidate's relevance.
+* **❓📋 AI-Powered Question Generation:** Generate interview questions tailored to a candidate's skills and experience, extracted from their resume. 
+* **✅🎯 Interview Question Feedback:** Get instant feedback on answers to practice questions, helping to improve communication and clarity.
+* **📜➡️ Resume-to-Question Generation:** Quickly generate interview questions based on a candidate's resume, for a personalized preparation experience.
 
 **For Recruiters:**
 
