@@ -7,10 +7,10 @@ TalentQuest is a web application built with Flask and React that empowers users 
 
 **For Candidates:**
 
-* **Resume Matching:** Analyze a candidate's resume against a given job description using  semantic similarity to determine the candidate's relevance. 📄🤝🧠
-* **AI-Powered Question Generation:** Generate interview questions tailored to a candidate's skills and experience, extracted from their resume. 🤖❓📋
-* **Interview Question Feedback:** Get instant feedback on answers to practice questions, helping to improve communication and clarity. 💬✅🎯
-* **Resume-to-Question Generation:** Quickly generate interview questions based on a candidate's resume, for a personalized preparation experience. 📜➡️❓🚀
+* ** 📄🤝 Resume Matching:** Analyze a candidate's resume against a given job description using  semantic similarity to determine the candidate's relevance.
+* ** ❓📋 AI-Powered Question Generation:** Generate interview questions tailored to a candidate's skills and experience, extracted from their resume. 
+* ** ✅🎯 Interview Question Feedback:** Get instant feedback on answers to practice questions, helping to improve communication and clarity.
+* ** 📜➡️ Resume-to-Question Generation:** Quickly generate interview questions based on a candidate's resume, for a personalized preparation experience.
 
 **For Recruiters:**
 
@@ -25,7 +25,7 @@ TalentQuest is a web application built with Flask and React that empowers users 
 
 2. **Install Dependencies:**
 
-### Backend (Flask):
+### 🖥️⚙️ Backend (Flask):
 
 
 ```bash
@@ -34,12 +34,12 @@ TalentQuest is a web application built with Flask and React that empowers users 
 ````
     
 
-### Frontend (React):
+### 🎨🖼️ Frontend (React):
 ```bash
 cd /client
 npm install
 ```
-### Create Database:
+### 🗄️🛠️ Create Database:
 
 Create a database3.db file in the backend directory.
 
@@ -65,7 +65,7 @@ npm start
 
 The application will be accessible at http://localhost:5000 (backend) and http://localhost:3000 (frontend).
 
-4.**Technologies Used**
+4.** 🛠️🌐 Technologies Used**
 ### Backend:
 
 * **Flask (Python web framework)**
